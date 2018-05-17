@@ -14,7 +14,7 @@
 Read through the rules and instructions to understand how to play. The online version of the rule book: [rules](http://chibiepic.com/rules.html). 
 
 You can support game by sending your feedback:
-- chibiepi.com@gmail.com
+- chibiepic.com@gmail.com
 - or here on github
 
 # Contributors
