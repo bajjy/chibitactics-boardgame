@@ -1,0 +1,3093 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chibitactics: Official Rulebook</title>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        /* General styling for screen display */
+        :root {
+            --primary-font: 'Merriweather', serif;
+            --secondary-font: 'Open Sans', sans-serif;
+            --text-color: #333;
+            --heading-color: #1a1a1a;
+            --bg-color: #f9f7f0;
+            --border-color: #ccc;
+            --accent-color: #a0522d; /* Sienna */
+            --chthonid-color: #4a2a5a; /* Dark Purple */
+            --fungoid-color: #556b2f; /* Dark Olive Green */
+            --human-color: #2f4f4f; /* Dark Slate Gray */
+            --savage-color: #8b0000; /* Dark Red */
+        }
+
+        body {
+            font-family: var(--secondary-font);
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--bg-color);
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .rulebook-container {
+            width: 100%;
+            max-width: 960px;
+            background: white;
+            padding: 40px 60px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            border-radius: 8px;
+            box-sizing: border-box;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: var(--primary-font);
+            color: var(--heading-color);
+            margin-top: 1.5em;
+            margin-bottom: 0.8em;
+        }
+
+        h1 {
+            font-size: 2.8em;
+            text-align: center;
+            color: var(--accent-color);
+            border-bottom: 3px solid var(--accent-color);
+            padding-bottom: 15px;
+            margin-bottom: 40px;
+        }
+
+        h2 {
+            font-size: 2.2em;
+            color: var(--accent-color);
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 10px;
+            margin-top: 3em;
+        }
+
+        h3 {
+            font-size: 1.8em;
+            color: var(--heading-color);
+            border-bottom: 1px dashed var(--border-color);
+            padding-bottom: 5px;
+            margin-top: 2.5em;
+        }
+
+        h4 {
+            font-size: 1.4em;
+            color: var(--heading-color);
+            margin-bottom: 0.5em;
+        }
+
+        p {
+            margin-bottom: 1em;
+        }
+
+        strong {
+            color: var(--accent-color);
+        }
+
+        em {
+            font-style: italic;
+        }
+
+        ul {
+            list-style-type: disc;
+            margin-left: 25px;
+            margin-bottom: 1em;
+        }
+
+        ol {
+            list-style-type: decimal;
+            margin-left: 25px;
+            margin-bottom: 1em;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 1.5em;
+            background-color: #fff;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+
+        th, td {
+            border: 1px solid var(--border-color);
+            padding: 10px 15px;
+            text-align: left;
+        }
+
+        th {
+            background-color: var(--accent-color);
+            color: white;
+            font-family: var(--primary-font);
+            font-weight: 600;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f8f8f8;
+        }
+
+        .note, .clarification {
+            background-color: #e6f7ff; /* Light blue */
+            border-left: 5px solid #007bff; /* Blue */
+            padding: 15px;
+            margin: 1.5em 0;
+            border-radius: 4px;
+            font-style: italic;
+        }
+
+        .tip {
+            background-color: #e0ffe0; /* Light green */
+            border-left: 5px solid #28a745; /* Green */
+            padding: 15px;
+            margin: 1.5em 0;
+            border-radius: 4px;
+            font-style: italic;
+        }
+
+        .humor-quote {
+            font-style: italic;
+            color: #666;
+            margin: 1em 0;
+            padding-left: 20px;
+            border-left: 3px solid #ddd;
+        }
+
+        .dark-fantasy-quote {
+            font-style: italic;
+            color: #5a5a5a;
+            margin: 1em 0;
+            padding-left: 20px;
+            border-left: 3px solid #888;
+        }
+
+        .warning {
+            background-color: #fff3cd; /* Light yellow */
+            border-left: 5px solid #ffc107; /* Yellow */
+            padding: 15px;
+            margin: 1.5em 0;
+            border-radius: 4px;
+            font-weight: bold;
+            color: #856404;
+        }
+
+        .footnote {
+            font-size: 0.85em;
+            color: #666;
+            margin-top: 2em;
+            border-top: 1px dashed var(--border-color);
+            padding-top: 10px;
+        }
+
+        /* Unit Card Styling */
+        .unit-card-section {
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 30px;
+            background-color: #fefefe;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+
+        .unit-card-section h4 {
+            font-size: 1.6em;
+            margin-top: 0;
+            margin-bottom: 15px;
+            padding-bottom: 5px;
+            border-bottom: 2px solid;
+        }
+
+        .chthonid-unit h4 { border-color: var(--chthonid-color); color: var(--chthonid-color); }
+        .fungoid-unit h4 { border-color: var(--fungoid-color); color: var(--fungoid-color); }
+        .human-unit h4 { border-color: var(--human-color); color: var(--human-color); }
+        .savage-unit h4 { border-color: var(--savage-color); color: var(--savage-color); }
+
+        .unit-intro {
+            font-style: italic;
+            margin-bottom: 1.5em;
+            color: #555;
+            border-left: 3px solid #eee;
+            padding-left: 10px;
+        }
+
+        .skill-list, .trophy-list {
+            list-style: none;
+            padding: 0;
+            margin-bottom: 1em;
+            margin-left: 0;
+        }
+
+        .skill-item, .trophy-item {
+            background-color: #f0f5fa;
+            border: 1px solid #d0e0f0;
+            border-radius: 5px;
+            padding: 10px 15px;
+            margin-bottom: 10px;
+        }
+
+        .skill-item strong, .trophy-item strong {
+            font-size: 1.1em;
+            color: #0056b3; /* Darker blue for skill/trophy names */
+        }
+
+        .skill-details, .trophy-details {
+            margin-top: 5px;
+            font-size: 0.95em;
+        }
+
+        .skill-properties span {
+            display: inline-block;
+            background-color: #e2e6ea;
+            color: #495057;
+            padding: 3px 8px;
+            border-radius: 3px;
+            font-size: 0.8em;
+            margin-right: 5px;
+            margin-top: 5px;
+        }
+
+        .dice-roll {
+            font-weight: bold;
+            color: #d63384; /* Pinkish red for dice rolls */
+        }
+
+        .tactical-tip {
+            background-color: #f7fcf0;
+            border-left: 3px solid #82b342; /* Greenish */
+            padding: 8px 12px;
+            margin-top: 10px;
+            font-size: 0.9em;
+            font-style: italic;
+            color: #555;
+            border-radius: 3px;
+        }
+    </style>
+    <style>
+        /* print.css - for print optimization */
+        @media print {
+            /* --- Universal Box-Sizing and Reset --- */
+            *, *::before, *::after {
+                box-sizing: border-box; /* Include padding and border in the element's total width and height */
+            }
+
+            /* --- Page Setup --- */
+            @page {
+                size: A4; /* Standard A4 paper size */
+                margin: 2cm; /* Consistent margins for printing */
+            }
+
+            body {
+                font-family: 'Open Sans', sans-serif; /* Ensure readable font for print */
+                font-size: 10pt; /* Base font size for body text */
+                color: #000; /* Black text for maximum clarity */
+                background-color: #fff !important; /* Force white background to save ink */
+                margin: 0; /* Remove default body margin */
+                padding: 0; /* Remove default body padding */
+                line-height: 1.4; /* Optimal line-height for print readability */
+                -webkit-print-color-adjust: exact; /* Ensure background colors are printed if desired, though usually overridden to white */
+                print-color-adjust: exact;
+            }
+
+            .rulebook-container {
+                width: 100%; /* Take full available width within page margins */
+                max-width: none; /* Override max-width from screen styles */
+                box-shadow: none; /* Remove shadows for print */
+                border-radius: 0; /* Remove rounded corners for print */
+                padding: 0; /* Remove container padding; margins are handled by @page */
+                margin: 0; /* Remove container margin */
+            }
+
+            /* --- Typography and Headings --- */
+            h1, h2, h3, h4, h5, h6 {
+                font-family: 'Merriweather', serif; /* Use primary font for headings */
+                color: #000; /* Black headings for clarity */
+                margin-top: 1.5em; /* Consistent top margin */
+                margin-bottom: 0.5em; /* Consistent bottom margin */
+                page-break-after: avoid; /* Prevent page break immediately after a heading */
+                orphans: 3; /* Minimum lines of a paragraph to be shown at page bottom */
+                widows: 3;  /* Minimum lines of a paragraph to be shown at page top */
+            }
+
+            h1 {
+                font-size: 24pt; /* Main title size */
+                text-align: center;
+                color: #333; /* Dark grey for main title */
+                border-bottom: 2px solid #666; /* Solid, clear border */
+                padding-bottom: 10px;
+                margin-bottom: 20px;
+                page-break-before: always; /* Force main title to start on a new page */
+                padding-top: 0; /* Ensure no top padding from previous elements */
+            }
+
+            h2 {
+                font-size: 18pt; /* Major section heading size */
+                color: #444; /* Slightly lighter grey for major sub-headings */
+                border-bottom: 1px solid #aaa; /* Clear, subtle border */
+                padding-bottom: 8px;
+                margin-top: 2em; /* More space before major sections */
+                page-break-before: always; /* Force major sections to start on a new page */
+                padding-top: 0;
+            }
+
+            h3 {
+                font-size: 14pt; /* Sub-section heading size */
+                color: #555;
+                border-bottom: 1px dashed #ccc; /* Dotted border for visual separation */
+                padding-bottom: 4px;
+                margin-top: 1.5em;
+                page-break-inside: avoid; /* Keep heading with its immediate content */
+                padding-top: 0;
+            }
+
+            h4 {
+                font-size: 12pt; /* Minor heading size */
+                color: #666;
+                margin-bottom: 0.3em;
+                page-break-inside: avoid; /* Keep heading with its immediate content */
+                padding-top: 0;
+            }
+
+            p {
+                font-size: 10pt; /* Standard paragraph font size */
+                margin-bottom: 0.8em; /* Consistent spacing between paragraphs */
+                orphans: 3; /* Prevent single lines at page breaks */
+                widows: 3;
+            }
+
+            strong {
+                font-weight: 700; /* Ensure strong text is visibly bold */
+                color: #000; /* Black for strong text */
+            }
+
+            em {
+                font-style: italic;
+            }
+
+            /* --- Lists --- */
+            ul, ol {
+                font-size: 10pt;
+                margin-left: 20px; /* Indent lists */
+                margin-bottom: 0.8em;
+                page-break-inside: avoid; /* Try to keep entire lists on one page */
+            }
+
+            li {
+                margin-bottom: 0.4em; /* Spacing between list items */
+            }
+
+            /* --- Tables --- */
+            table {
+                font-size: 9pt; /* Slightly smaller font for dense table data */
+                border-collapse: collapse;
+                margin-bottom: 1.2em;
+                background-color: #fff; /* White background for table */
+                box-shadow: none; /* Remove shadows */
+                page-break-inside: auto; /* Allow tables to break across pages if necessary */
+                width: 100%;
+            }
+
+            th, td {
+                border: 0.5px solid #bbb; /* Subtle, light grey borders */
+                padding: 8px 12px;
+                text-align: left;
+            }
+
+            th {
+                background-color: #eee; /* Light grey header background */
+                color: #333; /* Dark grey header text */
+                font-family: 'Open Sans', sans-serif;
+                font-weight: 600;
+            }
+
+            tr:nth-child(even) {
+                background-color: #f8f8f8; /* Very subtle row striping */
+            }
+
+            /* --- Special Content Blocks (Notes, Clarifications, Warnings) --- */
+            .note, .clarification, .warning, .tip {
+                background-color: #f0f0f0 !important; /* Consistent light grey background */
+                border-left: 3px solid #888; /* Darker grey solid border */
+                padding: 12px;
+                margin: 1em 0;
+                border-radius: 0; /* No rounded corners for print */
+                font-style: normal; /* Override italic if present in screen styles */
+                color: #333; /* Dark text for readability */
+                page-break-inside: avoid; /* Keep these blocks from breaking across pages */
+            }
+
+            .warning {
+                border-left-color: #e0a800; /* Distinct border color for warnings */
+                color: #664d03; /* Darker text for warnings */
+            }
+
+            .tip {
+                border-left-color: #28a745; /* Green border for tips */
+            }
+
+            .humor-quote, .dark-fantasy-quote {
+                font-style: normal;
+                color: #444;
+                border-left: 3px solid #ccc;
+                padding-left: 15px;
+                margin: 1em 0;
+                page-break-inside: avoid;
+            }
+
+            /* --- Footnotes --- */
+            .footnote {
+                font-size: 8pt; /* Smaller font for footnotes */
+                color: #555; /* Lighter grey for footnotes */
+                margin-top: 1.5em;
+                border-top: 0.5px dashed #ccc; /* Subtle separator */
+                padding-top: 8px;
+                page-break-before: avoid; /* Keep with preceding content if possible */
+            }
+
+            /* --- Unit Card Styling for Print --- */
+            .unit-card-section {
+                border: 1px solid #ccc; /* Light border for print */
+                border-radius: 0; /* No rounded corners */
+                padding: 15px;
+                margin-bottom: 20px;
+                background-color: #fefefe;
+                box-shadow: none; /* No shadow */
+                page-break-inside: avoid; /* Try to keep unit cards on one page */
+            }
+
+            .unit-card-section h4 {
+                font-size: 14pt;
+                margin-top: 0;
+                margin-bottom: 10px;
+                padding-bottom: 3px;
+                border-bottom: 1px solid #666; /* Clearer border for print */
+                color: #333; /* Darker color for print */
+            }
+
+            .chthonid-unit h4 { border-color: #666; color: #333; }
+            .fungoid-unit h4 { border-color: #666; color: #333; }
+            .human-unit h4 { border-color: #666; color: #333; }
+            .savage-unit h4 { border-color: #666; color: #333; }
+
+            .unit-intro {
+                font-style: normal;
+                margin-bottom: 1em;
+                color: #444;
+                border-left: 3px solid #ddd;
+                padding-left: 8px;
+            }
+
+            .skill-item, .trophy-item {
+                background-color: #f8f8f8; /* Lighter background for print */
+                border: 0.5px solid #e0e0e0; /* Lighter border */
+                border-radius: 0;
+                padding: 8px 12px;
+                margin-bottom: 8px;
+            }
+
+            .skill-item strong, .trophy-item strong {
+                font-size: 10.5pt;
+                color: #000; /* Black for print */
+            }
+
+            .skill-details, .trophy-details {
+                margin-top: 3px;
+                font-size: 9.5pt;
+            }
+
+            .skill-properties span {
+                background-color: #f0f0f0;
+                color: #555;
+                padding: 2px 6px;
+                font-size: 7.5pt;
+                margin-right: 4px;
+                margin-top: 4px;
+            }
+
+            .dice-roll {
+                color: #000; /* Black for print */
+            }
+
+            .tactical-tip {
+                background-color: #f0f8f0; /* Lighter green for print */
+                border-left: 3px solid #28a745;
+                padding: 6px 10px;
+                margin-top: 8px;
+                font-size: 8.5pt;
+                font-style: normal;
+                color: #444;
+            }
+
+            /* --- Ensure no unwanted margins/paddings from screen styles --- */
+            .p-4, .sm\:p-6, .md\:p-8, .mb-8, .ml-5, .mt-2 {
+                padding: 0 !important;
+                margin: 0 !important;
+            }
+
+            /* Re-apply necessary margins for print where appropriate */
+            section {
+                margin-bottom: 1.5em; /* Spacing between sections */
+            }
+
+            ul.list-disc, ol.list-decimal {
+                margin-left: 20px !important; /* Ensure lists are indented */
+            }
+
+            .section-divider {
+                display: none; /* Hide decorative dividers for print */
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="rulebook-container">
+        <h1>Chibitactics: Official Rulebook</h1>
+
+        <p class="intro">
+            Welcome, brave adventurer, to the Abyss – a realm where reality bends and ancient powers stir. Chibitactics is not merely a game; it is a crucible where strategic minds clash, where the fate of nascent worlds hangs in the balance, and where even the most cunning plans can unravel in a cascade of temporal paradoxes. Assemble your chosen vanguard, delve into the shifting landscapes, and prepare to outwit, outmaneuver, and utterly dominate your foes. This tome, though humble in appearance, holds the keys to understanding this strange and perilous existence. Read, learn, and perhaps, survive.
+        </p>
+
+        <div class="warning">
+            <strong>WARNING:</strong> Chibitactics is currently in beta. Game balance and gameplay mechanics may be subject to change. You may encounter errors, bugs, imbalances, and situations not explicitly described in these rules. Consider this less a finished manuscript and more a living grimoire. Your feedback, bug reports, and recommendations are highly appreciated and can be sent to: chibiepic.com@gmail.com. We appreciate your contribution to the ongoing madness.
+        </div>
+
+        <h2>Game Overview</h2>
+        <ul>
+            <li><strong>Players:</strong> 2+ (The more, the merrier the chaos!)</li>
+            <li><strong>Game Session:</strong> Approximately 80 minutes (Time flies when you're resurrecting allies and binding enemies!)</li>
+            <li><strong>Age:</strong> 12+ (Requires a mind capable of tactical brilliance and a strong stomach for existential dread.)</li>
+        </ul>
+        <p>
+            Every faction, unit, and tile in Chibitactics possesses unique properties, offering players hundreds of distinct paths to victory. Each game session promises to be unlike the last, thanks to dynamic global events that reshape the world each round. One moment you're traversing a serene forest, the next, it's a bubbling swamp. Adapt or be consumed!
+        </p>
+
+        <h3>Resolving Disputes</h3>
+        <p>
+            Ah, the inevitable clash of interpretations! Any disagreements or ambiguities between players during the game should be resolved either through a collective vote (the democratic path to doom) or by a simple dice roll (the path of pure, glorious chance). All players are responsible for upholding the rules and ensuring fair play. This collaborative approach ensures the game remains fair and engaging for everyone, even when someone's favorite unit is unexpectedly devoured by a sentient mushroom.
+        </p>
+
+        <h3>Game Components</h3>
+        <p>
+            Before starting, ensure you have all the necessary components for Chibitactics. Misplacing a component is a rookie mistake, and the Abyss is not kind to rookies.
+        </p>
+        <ul>
+            <li><strong>Faction Decks:</strong> In the starter set, there are 3 faction decks (Humans, Chthonids, Fungoids). Each deck contains unit cards specific to that faction.
+                <ul>
+                    <li>**Instruction Cards:** Located within the faction decks, these cards describe the unique features and abilities of each faction. Keep these handy; forgetting your racial ability is like forgetting your own name in a dimension where names have power.</li>
+                </ul>
+            </li>
+            <li><strong>Savage Deck:</strong> A collection of aggressive inhabitants of this world that you will encounter during exploration. Detailed information about Savages can be found on their instruction card (look for it in the Savage deck). Beware, for these creatures are not to be trifled with, unless you enjoy being dismembered.</li>
+            <li><strong>Character Tokens:</strong> Each unit card has a corresponding physical token that represents the unit on the game board. These are your pawns in this grand, macabre dance.</li>
+            <li><strong>Game Segments (Map Tiles):</strong> These are hexagonal pieces that form the dynamic game map. They shift, they change, they conspire against you.</li>
+            <li><strong>Event Deck:</strong> This deck contains cards dictating global phenomena that affect the world, occurring once per round. These are the whims of the Abyss, often cruel, sometimes surprisingly beneficial.</li>
+            <li><strong>Six-sided Die:</strong> A standard die used for various rolls throughout the game. Your fate, and the fate of your units, often rests on its tumble.</li>
+        </ul>
+
+        <h2>Game Setup and Start</h2>
+
+        <h3>Setting Up the Game Board</h3>
+        <ol>
+            <li><strong>Shuffle Map Segments:</strong> Thoroughly shuffle all game segments (map tiles). A poorly shuffled map is a predictable map, and predictability is the enemy of fun (and survival).</li>
+            <li><strong>Lay Out Face-Down:</strong> Arrange the shuffled segments face-down (backside up) in a pattern agreed upon by the players. The size and shape of the playing field can be customized by mutual agreement. Feel free to craft your own little pocket of impending doom.</li>
+            <li><strong>Place Starting Segments:</strong> Place one designated starting segment (marked as such) face-up for each player. These are typically placed openly at the beginning. Consider them your tiny, temporary bastions against the encroaching unknown.</li>
+        </ol>
+
+        <h3>Choosing Factions and Squads</h3>
+        <ol>
+            <li><strong>Faction Selection:</strong> Players choose their faction (Humans, Chthonids, or Fungoids). The corresponding faction deck is assigned to that player. Choose wisely, for your destiny is intertwined with your faction's very essence.</li>
+            <li><strong>Unit Selection:</strong> Without showing each other, players draw unit cards from their chosen faction's deck to form their squad.
+                <ul>
+                    <li><strong>Recommended Squad Size:</strong> It is recommended that each player's squad consists of 4 units, but the exact number can always be agreed upon by the players. A smaller squad means fewer targets, but also fewer bodies to throw at the problem.</li>
+                </ul>
+            </li>
+            <li><strong>Faction and Unit Details:</strong> The unique features of each faction, as well as the specific abilities and behaviors of individual units, can be found on their respective instruction cards. Memorize them; they are your gospel.</li>
+        </ol>
+
+        <h3>Determining Turn Order</h3>
+        <p>
+            Players must decide who takes the first turn. This can be done by mutual agreement or by rolling the die (highest roll goes first). If there are more than two players, play proceeds clockwise from the first player. The first move often dictates the flow of battle, so don't be shy about rolling for initiative!
+        </p>
+
+        <h2>Core Gameplay Mechanics</h2>
+
+        <h3>Player and Unit Turns</h3>
+        <p>
+            Units within a player's squad possess various skills, and a unit's turn is spent utilizing these skills. Every action counts in the Abyss, so plan your moves like a master puppeteer.
+        </p>
+        <ol>
+            <li><strong>Unit Activation:</strong> On your turn, you activate one of your units to perform an action.</li>
+            <li><strong>Skill Usage:</strong> A unit's turn is primarily spent using one of its skills, as detailed on its Unit Card.
+                <ul>
+                    <li><strong>One Skill Per Turn (Generally):</strong> Typically, a unit's turn ends after it uses one of its skills. However, certain skill categories, Event Cards, or faction abilities may allow a unit to perform additional actions or continue its turn (e.g., Melee skills can often be used after Movement skills). Don't be afraid to chain abilities for maximum impact!</li>
+                </ul>
+            </li>
+            <li><strong>Faction Ability:</strong> In your turn, you may also use your faction's unique racial ability. These are powerful tools, often overlooked in the heat of battle.</li>
+            <li><strong>Passing:</strong> You may choose to take no actions on your turn and simply pass. This is a tactical decision. Sometimes, doing nothing is the most dangerous move of all.</li>
+            <li><strong>Ending Your Turn:</strong> You must clearly and audibly declare the end of your turn. The next player cannot begin their turn until you have explicitly done so. No sneaky moves!</li>
+        </ol>
+
+        <h3>Game Rounds and Epic Events</h3>
+        <p>
+            A game round concludes when the last player in the turn order has completed their turn. The end of each round is always accompanied by an Epic Event. These are the Abyss's way of reminding you who's truly in charge.
+        </p>
+
+        <h3>Event Cards</h3>
+        <p>
+            At the end of each game round, the first player draws the top card from the Event Deck and reads its effects aloud.
+        </p>
+        <ul>
+            <li><strong>Event Types:</strong> Events can be either <em>Instant</em> (their effect occurs immediately and is resolved, e.g., a rockfall) or <em>Ongoing</em> (their effect persists until the end of the current round).</li>
+            <li><strong>Mandatory Effects:</strong> All effects described on an Event Card are mandatory and must be applied. The Abyss cares not for your plans.</li>
+            <li><strong>Conflict Resolution:</strong> If an Event Card's effect conflicts with a unit skill, terrain effect, or any other game rule, the Event Card's effect takes precedence unless otherwise specified on the card. The universe has its own rules, and they are not always convenient.</li>
+            <li><strong>Deck Management:</strong> After an Event Card is resolved, it is discarded. If the Event Deck is depleted, shuffle the discard pile to form a new Event Deck. The cycle of chaos is endless.</li>
+        </ul>
+
+        <h3>Movement</h3>
+        <p>
+            A unit's movement is expressed as the number of cells it can cover on the game board during its turn. This value is listed on the unit's card.
+        </p>
+        <ul>
+            <li><strong>Starting Cell:</strong> The cell a unit begins its movement on is not counted towards its movement allowance.</li>
+            <li><strong>Path Declaration:</strong> You must declare the intended path of your unit's movement before moving its token. No teleporting through walls unless you're a Chthonid and explicitly allowed!</li>
+            <li><strong>Cell Effects:</strong> As a unit moves, it steps onto each cell in its path. If a cell has an active effect, that effect is triggered as the unit enters it. Players should carefully monitor active effects on the board. The ground itself can be your ally or your undoing.</li>
+            <li><strong>Ending Movement:</strong> A unit's movement must always end on an unoccupied cell.</li>
+            <li><strong>Blocking & Occupied Cells:</strong>
+                <ul>
+                    <li>Alive units cannot be moved through. They are inconveniently solid.</li>
+                    <li>Cells containing wounded units are considered occupied. You may move through such cells, but you are forbidden from ending your movement on a cell occupied by a wounded unit. It's considered bad form, and also, they might still bite.</li>
+                    <li>Movement onto or through Mountain or Water cells is generally prohibited unless a specific skill or effect explicitly allows it. Similarly, you cannot end your turn on a Mountain or Water cell. The Abyss is not a fan of shortcuts.</li>
+                </ul>
+            </li>
+            <li><strong>Teleportation:</strong> Instantaneous relocation from one point to another. Teleportation ignores all obstacles and effects on intervening or destination cells. A true Chthonid specialty, for those who laugh in the face of physics.</li>
+        </ul>
+
+        <h3>Exploration</h3>
+        <p>
+            To explore a new area of the game board:
+        </p>
+        <ol>
+            <li>Position one of your units adjacent to a face-down Map Tile. "Adjacent" means sharing an edge.</li>
+            <li>Declare that you have finished your turn.</li>
+            <li>Immediately after your turn ends, the face-down Map Tile is revealed and placed face-up.
+                <ul>
+                    <li>Once a unit triggers exploration, it cannot move further or take any other actions during that turn. Curiosity killed the cat, and it might just wound your unit.</li>
+                    <li>Any unit (excluding Savages), even accidentally, that happens to be on the border of a face-down segment will activate its exploration. The Abyss reveals itself when it's good and ready, or when you stumble into it.</li>
+                    <li>If a unit is on the border of multiple face-down segments, all of those segments are revealed and activated simultaneously. A cascade of discovery... or disaster.</li>
+                </ul>
+            </li>
+        </ol>
+
+        <h3>Terrain and Structures</h3>
+        <p>
+            The game board is composed of various terrain types and structures, each with unique properties that affect gameplay. Understanding these is paramount to survival; the land itself is a weapon.
+        </p>
+        <ul>
+            <li><strong>Mountains:</strong> Impassable terrain. Units cannot move onto or through Mountain cells. Ranged attacks cannot be made through Mountain cells. Units cannot end their turn on Mountain cells. Think of them as very large, inconvenient walls.</li>
+            <li><strong>Water:</strong> Impassable terrain. Movement on Water cells is prohibited. Units cannot end their turn on Water cells. Unless you're a Swamper, in which case, enjoy your soggy existence.</li>
+            <li><strong>Forest:</strong> Each Forest cell entered by a unit reduces its movement allowance by 1 (e.g., if a unit has 3 movement and enters a Forest, it has 2 movement remaining). A dense, thorny embrace that slows even the swiftest.</li>
+            <li><strong>Hills:</strong> Units on Hill cells gain +1 to the range of their Ranged attacks (e.g., a skill with 3 range becomes 4 range on a Hill). The high ground grants a clear shot, and a tactical advantage.</li>
+            <li><strong>Fortification:</strong> Units in Fortification cells gain +1 to their melee attack rolls (e.g., a standard success on 4-5-6 becomes 3-4-5-6). A sturdy defense for those who prefer to meet their enemies up close and personal.</li>
+            <li><strong>Power Site:</strong> Units in Power Site cells gain +1 to their Distortion skill rolls (e.g., a standard success on 4-6 becomes 3-6). These are places where the fabric of reality is thin, perfect for those who dabble in the arcane.</li>
+            <li><strong>Cave:</strong> When a Cave cell is revealed during exploration, a Savage unit is spawned from the Savage Deck onto that cell. (See "Savages and Control" section). A dark maw from which primal horrors emerge.</li>
+            <li><strong>Cradle:</strong> Units in Cradle cells gain +1 to their Summoning skill rolls (e.g., a standard success on 4-5-6 becomes 3-4-5-6). A nexus of life, or perhaps, unlife.</li>
+        </ul>
+
+        <h3>Savages and Control</h3>
+        <p>
+            Savages are the untamed, monstrous inhabitants of the Abyss. They are not to be underestimated, for their primal fury can turn the tide of battle, often unexpectedly. When a Cave cell is explored, a Savage is activated. Its token is placed on the Cave cell, and the player who explored the Cave takes the corresponding Savage card.
+        </p>
+        <ol>
+            <li><strong>Savage Turn:</strong> A Savage immediately takes its turn after the player who activated it finishes their turn. If multiple Savages are active, they take their turns in clockwise order starting from the activating player. They are impatient creatures.</li>
+            <li><strong>Control Determination:</strong> Before a Savage's turn, players determine who controls it for that turn. Measure the distance from the Savage to the closest unit of each player. The player whose closest unit is *further* from the Savage gains control for that round. If distances are equal, players roll a d6, and the highest roll gains control. It's a twisted game of "hot potato" with a monster.</li>
+            <li><strong>Controlled Savage:</strong> A Savage under a player's control is considered part of that player's squad and adheres to all unit and squad rules. Treat them as a temporary, very grumpy ally.</li>
+            <li><strong>Savage Restrictions:</strong>
+                <ul>
+                    <li>A Savage cannot leave the map segment it was spawned on. They are creatures of habit, or perhaps, territoriality.</li>
+                    <li>Savages attack the *closest* enemy unit within the range of their skills. If a controlling player's unit is equally close to an enemy unit, control of the Savage shifts to the other player. Their loyalty is fleeting, their hunger eternal.</li>
+                    <li>Savages do not collect trophies from defeated units. Any trophies they would acquire are immediately discarded. If a Savage gained trophies while under a player's control, it discards them as soon as control is lost. They care not for trinkets, only for destruction.</li>
+                </ul>
+            </li>
+            <li><strong>Loss of Control:</strong> If a Savage was previously under a player's control (e.g., via a "Parasites" skill) and that control is lost, the Savage becomes tethered to its current map segment. It will then take its turn at the end of the round, after all players have completed their actions. A wild beast unleashed, but still confined.</li>
+        </ol>
+
+        <h2>Combat and Unit States</h2>
+
+        <h3>Wounds and Death</h3>
+        <p>
+            In Chibitactics, there's no need to track hit points or complex wound mechanics. Units are in one of three clear states:
+        </p>
+        <ul>
+            <li><strong>Alive:</strong> The unit is fully functional and can perform actions. Breathing, fighting, generally being a nuisance.</li>
+            <li><strong>Wounded:</strong> The unit has taken damage and is immobilized, unable to use its skills. The unit's token is flipped to its wounded side. A crumpled heap, but still capable of being revived.</li>
+            <li><strong>Dead:</strong> The unit is removed from the game board. Gone, but not forgotten... unless you forget them.</li>
+        </ul>
+
+        <h4>Becoming Wounded</h4>
+        <p>
+            A unit becomes Wounded as a result of a successful attack or skill that explicitly states it causes a wound. It's a temporary setback, a mere flesh wound... usually.
+        </p>
+
+        <h4>Achieving Death</h4>
+        <p>
+            A Wounded unit can be "finished off" and removed from the game. When a unit dies, any trophies it held are returned to their respective decks. The unit card of the slain unit is then transferred as a trophy to the unit that delivered the killing blow (see "Trophies" section), provided the killer is within 3 cells of the defeated unit.
+        </p>
+        <p>
+            Wounded units can be finished off in several ways:
+        </p>
+        <ul>
+            <li><strong>Melee Finish:</strong> If your unit is adjacent to a wounded enemy unit, you may declare at the start of your unit's turn that its action will be to "finish off" the target. The target is immediately destroyed, and your unit loses its turn. A swift, brutal end.</li>
+            <li><strong>Skills:</strong> You may use unit skills on wounded units just as you would on healthy ones. If the skill is successfully applied, the wounded target is destroyed. Sometimes, a little overkill is just good strategy.</li>
+            <li><strong>Events:</strong> Certain game events may cause wounded units to be destroyed. The Abyss has a way of cleaning up its own messes.</li>
+        </ul>
+
+        <h4>Special Death Properties</h4>
+        <p>
+            Some units possess unique properties related to how they take damage or are removed from play:
+        </p>
+        <ul>
+            <li><strong>Fast Wound:</strong> For units with this property, a wound can be inflicted simply by spending a turn adjacent to them (you declare aloud that your unit is spending its turn to wound the target). An attack skill is not necessarily required. They're just that fragile, or perhaps, that tempting a target.</li>
+            <li><strong>Fast Death:</strong> Units with "Fast Death" skip the wounded phase entirely and are immediately destroyed. Similar to "Fast Wound," you can destroy such a unit by spending a turn adjacent to it or by successfully applying a combat skill. No time for last rites, just a quick trip to the void.</li>
+        </ul>
+
+        <h3>Trophies</h3>
+        <p>
+            When your units defeat enemies on the map, they earn trophies. The unit that destroys a target collects its unit card as a trophy, provided the killer is within 3 cells of the defeated unit. The trophy card is placed face-down underneath the killer unit's own unit card. A unit can hold any number of trophies. Consider them morbid souvenirs.
+        </p>
+        <p>
+            Captured trophies can be used to activate bonus effects, either before or after your unit's main action, without costing an additional action. They are echoes of fallen power, waiting to be unleashed.
+        </p>
+
+        <h4>Trophy Types</h4>
+        <p>
+            Each trophy card offers two potential effects:
+        </p>
+        <ul>
+            <li><strong>Substance:</strong> A close-range or self-targeting effect. Applies only when adjacent to the target or on self. These typically do not require a dice roll. Often a quick, dirty trick.</li>
+            <li><strong>Totem:</strong> An effect that requires a dice roll to activate, mimicking a skill described on the trophy card. A more potent, but less reliable, burst of power.</li>
+        </ul>
+
+        <h4>Using Trophies</h4>
+        <ol>
+            <li>You must declare which trophy you are using and which effect (Substance or Totem) you are activating. Transparency is key, even in the shadows.</li>
+            <li>You must show the trophy card to all other players.</li>
+            <li>Only one trophy effect can be used per unit action.</li>
+            <li>Using a trophy does not consume your unit's main action for the turn. It's a bonus, a little extra something for your troubles.</li>
+            <li>After use (regardless of success), the trophy card is discarded to its original deck's discard pile. Power is fleeting in the Abyss.</li>
+        </ol>
+
+        <h4>Trading Trophies</h4>
+        <ul>
+            <li>A unit can trade a trophy to an adjacent squadmate without losing its turn. Share the spoils of war, or at least the tools of destruction.</li>
+            <li>Trophies cannot be traded to Savages, summoned units, enemy units, or wounded units. Some things are simply not meant to be shared.</li>
+            <li>Summoned units (those brought into play via "Summon" category skills) cannot acquire trophies. They are mere extensions, not true warriors.</li>
+        </ul>
+
+        <h2>Unit Skills</h2>
+        <p>
+            Skills are the core of your units' capabilities and are listed on each unit's card. Mastering the strategic planning and application of these skills is key to victory in Chibitactics. Every skill has parameters that define how it is used and how it affects the environment, targets, players, and the caster.
+        </p>
+
+        <h3>Skill Activation</h3>
+        <p>
+            Once you've determined your tactics, you begin to activate your units' skills:
+        </p>
+        <ol>
+            <li>You must declare aloud the skill you are using and its target (e.g., "I am using 'Fireball' against the Savage"). Leave no room for doubt.</li>
+            <li>Then, roll the die (if the skill requires a roll). The fates are fickle.</li>
+            <li>Finally, perform the actions specified in the skill's description or according to its category.</li>
+        </ol>
+        <p>
+            After using a skill, your unit typically cannot use further skills – its turn is concluded. However, specific skill categories, Event Cards, faction abilities, or other effects might allow a unit to retain or gain additional actions (e.g., Melee skills can be used after Movement skills). Always look for opportunities to maximize your impact!
+        </p>
+        <p>
+            <strong>Friendly Fire:</strong> Skill effects apply to all units within their range or radius, including your own squad members. Carefully choose the target cell for your skills, especially those with an "Area Effect" property, as they can be dangerous to your own forces. There's a fine line between a tactical strike and a self-inflicted wound.
+        </p>
+        <p>
+            <strong>Dice Roll Modifiers:</strong> Skills and trophies that provide bonuses to dice rolls (e.g., "+1 to dice roll") apply only to the *very next* dice roll made. Subsequent rolls are not affected by this bonus unless another modifier is applied. Don't get greedy with your luck.
+        </p>
+
+        <h3>Skill Categories</h3>
+        <p>
+            All unit skills fall into specific categories. A skill's category defines its basic use, default effects, and when it can or cannot be used. Categories are often represented by icons on unit cards. It's important to note that if a skill's specific description conflicts with its category or general properties, the **skill's description takes precedence.**
+        </p>
+        <p>
+            <strong>Dice Roll Indication:</strong> The numbers on the die icon indicate the required roll for skill activation. If no die roll is indicated, refer to the skill category's description and its standard properties. Some skills do not require a dice roll, and there is a separate category for Passive skills.
+        </p>
+
+        <h4>Movement Skills</h4>
+        <p>
+            These skills allow a unit to traverse the game board. The number of cells a unit can move is indicated in the skill's description.
+        </p>
+        <ul>
+            <li>The cell a unit starts on is not counted towards its movement.</li>
+            <li>Units are generally forbidden from stopping or moving through Mountains or Water (unless other effects dictate otherwise).</li>
+            <li>Movement must end on an unoccupied cell. Cells with wounded units are considered occupied; you can move through them but not end your turn on them.</li>
+            <li>During movement, you must count each cell and declare the path your unit is taking. If a cell has an effect, it triggers as the unit enters it.</li>
+            <li><strong>Standard Properties:</strong> None.</li>
+        </ul>
+
+        <h4>Melee Combat Skills</h4>
+        <p>
+            Used for close-quarters combat.
+        </p>
+        <ul>
+            <li>Requires the unit to be immediately adjacent to the target.</li>
+            <li>Requires a dice roll.</li>
+            <li>Skills in this category can be activated after using a Movement skill in the same turn.</li>
+            <li>Units with Melee skills "Bind" units they are adjacent to (see "Bind" property).</li>
+            <li>Upon a successful dice roll, the target is Wounded (or suffers another effect as described on the card).</li>
+            <li>Melee skills gain a +1 bonus to their dice roll when used from a Fortification cell.</li>
+            <li><strong>Standard Success Roll:</strong> 4-5-6 (on a d6).</li>
+            <li><strong>Standard Range:</strong> 1 (adjacent).</li>
+            <li><strong>Standard Properties:</strong> Action After Movement, Bind.</li>
+        </ul>
+
+        <h4>Ranged Combat Skills</h4>
+        <p>
+            Used for attacks at a distance.
+        </p>
+        <ul>
+            <li>Requires a clear line of sight to the target; there must be no Mountain cells between the attacker and target. Line of sight is blocked by the first unit in the way.</li>
+            <li>Requires a dice roll.</li>
+            <li>Upon a successful dice roll, the target is Wounded (or suffers another effect as described on the card).</li>
+            <li>Ranged skills gain a +1 bonus to their range when used from a Hill cell.</li>
+            <li><strong>Standard Success Roll:</strong> 4-5-6 (on a d6).</li>
+            <li><strong>Standard Range:</strong> 2+ (specific range indicated in the skill description).</li>
+        </ul>
+
+        <h4>Distortion Skills</h4>
+        <p>
+            These skills represent magical or psionic effects, manipulating matter, space, and even time.
+        </p>
+        <ul>
+            <li>Typically require a dice roll for activation.</li>
+            <li>Can be positive or negative in effect.</li>
+            <li>The skill description usually provides full information on its operation (e.g., Fireballs, Teleportation, Mind Control).</li>
+            <li>The target can be any cell or unit, including the skill's caster.</li>
+            <li>Distortion skills can be used even if the unit is "bound."</li>
+            <li><strong>Standard Success Roll:</strong> 4-5-6 (on a d6).</li>
+            <li><strong>Standard Range:</strong> 0 (self-targeting), unless otherwise specified on the unit card.</li>
+        </ul>
+
+        <h4>Summoning Skills</h4>
+        <p>
+            Allows you to bring new units onto the map, according to the character's skills and faction features.
+        </p>
+        <ul>
+            <li>Typically requires you to specify an unoccupied target cell for the summoned unit's creation.</li>
+            <li>The summoned unit is usually placed on a cell adjacent to the summoning unit (unless otherwise specified on the card).</li>
+            <li>A summoned unit immediately takes its turn after appearing on the map.</li>
+            <li>Summoned creatures cannot acquire or carry trophies.</li>
+            <li>Summoning skills gain a +1 bonus to their dice roll when used from a Cradle cell.</li>
+            <li><strong>Standard Success Roll:</strong> 4-5-6 (on a d6).</li>
+            <li><strong>Standard Range:</strong> 1 (adjacent).</li>
+        </ul>
+
+        <h4>Buff Skills</h4>
+        <p>
+            Buffs provide additional enhancements to a unit, but must be used carefully.
+        </p>
+        <ul>
+            <li>If the dice roll for a buff is unsuccessful, the unit's turn immediately ends.</li>
+            <li>If the dice roll is successful, the unit can continue its turn and use any of its other skills, *except another buff skill*.</li>
+            <li><strong>Standard Range:</strong> 0 (self-targeting), unless otherwise specified on the unit card.</li>
+            <li><strong>Standard Properties:</strong> One-Time.</li>
+        </ul>
+
+        <h4>Passive Skills</h4>
+        <p>
+            Passive skills are innate abilities of units.
+        </p>
+        <ul>
+            <li>This category does not require activation or target selection.</li>
+            <li>The conditions for these skills are always met by default.</li>
+            <li><strong>Standard Range:</strong> 0 (self-targeting), unless otherwise specified on the unit card.</li>
+        </ul>
+
+        <h3>Skill Properties and Keywords (Detailed)</h3>
+        <p>
+            Any skill can possess one or more additional properties. These properties supplement the skill, providing a more complete understanding of its behavior. Properties are described in the skill descriptions. Standard properties are listed at the end of each skill category.
+        </p>
+
+        <h3>Skill Properties</h3>
+        <p>
+            Any skill can possess one or more additional properties. Properties supplement the skill, providing a more complete understanding of its behavior. Properties are described in skill descriptions. Standard properties are described at the end of categories.
+        </p>
+
+        <h4>Range</h4>
+        <p>
+            The distance (number of cells) at which a skill can be applied. The target must be within the skill's range. The range count starts from the cell next to the unit using the skill. If there is a cell (or part of a cell) with a mountain on the direct path to the target, then the target is unreachable.
+        </p>
+
+        <h4>Radius</h4>
+        <p>
+            Such skills affect each cell within the radius. A skill with this property is applied separately for each target caught within the skill's radius. The area of effect is calculated from the point where the skill was successfully directed + radius around the cell.
+        </p>
+
+        <h4>Bind</h4>
+        <p>
+            While a unit is in the zone of effect (determined by properties) of a skill with this property, it is bound. If a bound target attempts to use movement, summoning, or ranged combat - the current skill is applied out of turn and before the target's skill (i.e., the action of a bound unit may end with a wound).
+        </p>
+
+        <h4>Area Effect</h4>
+        <p>
+            Skills with this property affect the entire area. You don't need to roll a die for each target in the skill's area of effect. The skill's effect applies to all targets simultaneously in this zone.
+        </p>
+
+        <h4>Action After Movement</h4>
+        <p>
+            Skills with this property can be used after the unit has used Movement category skills.
+        </p>
+
+        <h4>One-Time</h4>
+        <p>
+            The effect of such a skill will last until the next turn of the unit that applied this skill. The effect of a one-time skill stops working as soon as the player declares the use of the unit's skills. Moreover, the effect dissipates, and only then does the effect of the new skill take effect.
+        </p>
+
+        <h4>Persistent</h4>
+        <p>
+            Effects from persistent skills will work until the creator cancels the effect, is wounded, or is dispelled by other effects.
+        </p>
+
+        <h4>Cancellation</h4>
+        <p>
+            Canceling the effect of a persistent skill or summoned creature is a full turn. To cancel (as well as to create) requires spending a full turn of the unit.
+        </p>
+
+        <h2>Factions of Chibitactics</h2>
+        <p>
+            The Abyss is a tapestry woven from disparate realities, and its inhabitants are as varied as the nightmares that haunt the edges of sanity. Each faction in Chibitactics offers a unique philosophy, a distinct approach to survival, and a specialized set of tools for dominance. Choosing your faction is not merely selecting a color; it is embracing a destiny. Will you wield ancient, reality-bending powers, command a fungal horde, deploy the cold precision of human technology, or embrace the raw, untamed savagery of the Abyss itself?
+        </p>
+        <div class="dark-fantasy-quote">
+            <em>"The Abyss does not care for your intentions, only your actions. And the results of those actions will echo through eternity." - An unknown Chthonid philosopher, probably.</em>
+        </div>
+
+        <div class="tip">
+            <strong>Choosing Your First Faction:</strong>
+            Consider your playstyle! Do you prefer direct confrontation, cunning manipulation, or overwhelming numbers? Each faction excels in different areas. Don't be afraid to try them all!
+        </div>
+
+        <h3>Faction Comparison</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Faction</th>
+                    <th>Core Playstyle</th>
+                    <th>Racial Ability Highlight</th>
+                    <th>Typical Strengths</th>
+                    <th>Typical Weaknesses</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Humans</strong></td>
+                    <td>Technological warfare, precise strikes, strategic positioning.</td>
+                    <td>Turn Transfer: Pass your unit's turn to an ally.</td>
+                    <td>Versatile, strong ranged options, good support, adaptable.</td>
+                    <td>Can be fragile in direct melee, reliant on positioning and synergy.</td>
+                </tr>
+                <tr>
+                    <td><strong>Chthonids</strong></td>
+                    <td>Reality manipulation, time distortion, tactical teleportation.</td>
+                    <td>Teleportation: Reposition a unit without losing turn.</td>
+                    <td>High mobility, disruptive effects, unpredictable, powerful control.</td>
+                    <td>Can be complex to master, effects may backfire, less direct damage.</td>
+                </tr>
+                <tr>
+                    <td><strong>Fungoids</strong></td>
+                    <td>Horde tactics, area control, mind manipulation, resilience.</td>
+                    <td>Spore Rebirth: Replace a wounded Fungoid unit.</td>
+                    <td>Swarming, strong control effects, hard to fully eliminate, self-sustaining.</td>
+                    <td>Slower movement, rely on adjacency for wounds, can be vulnerable to area damage.</td>
+                </tr>
+                <!-- <tr>
+                    <td><strong>Savages</strong></td>
+                    <td>Brutal melee, primal power, unpredictable aggression.</td>
+                    <td>Primal Resilience: Recover wounds/gain bonuses.</td>
+                    <td>High damage output, resilient, good for aggressive, direct play.</td>
+                    <td>Unpredictable control (when not controlled by a player), limited range, cannot take trophies.</td>
+                </tr> -->
+            </tbody>
+        </table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <h2>The Ancient Chthonids</h2>
+        <p>
+            Once akin to deities, the Chthonids possessed the power to manipulate reality itself, shaping the environment according to their capricious will. Yet, an existence of unbridled power and serenity softened and weakened this ancient race. They stirred the cosmos less and less with their grand displays, venturing ever more infrequently from their hidden sanctuaries. Ultimately, they found solace in the fertile world of the Abyss, descending into its deepest chasms to enter a profound state of anabiosis. It seemed nothing could disturb their slumber... until now.
+        </p>
+        <p>
+            The Ancient Chthonids wield formidable distortion abilities, capable of influencing matter, space, and even time. Their singular purpose is destruction, transforming ruins into something new, only for that new creation to be shattered once more. Chaos – raw, unbridled chaos – is their lifeblood. Will the Abyss finally succumb to the might of the Ancients and become building material for new worlds? Or will it stand defiant against the forces that seek to unravel its very fabric?
+        </p>
+
+        <h4>Racial Ability: Teleportation</h4>
+        <p>
+            Once per turn, by rolling a d6 and achieving a result of 3, 4, 5, or 6, a Chthonid unit from your squad can be **teleported** up to 3 cells away from its initial position without losing its turn.
+        </p>
+        <div class="clarification">
+            <em>Teleportation is an instantaneous transfer from one point to another. Obstacles or effects on the cells along the path or at the destination are ignored for the purpose of the teleport itself. You simply cease to be here, and then are there.</em>
+        </div>
+        <div class="tactical-tip">
+            <strong>Insight:</strong> This racial ability is the cornerstone of Chthonid strategy. Use it to bypass enemy lines, quickly reinforce a threatened flank, or snatch objectives. It's also a fantastic escape tool for a wounded unit.
+        </div>
+
+        <h3>Chthonid Units</h3>
+
+        <div class="unit-card-section chthonid-unit">
+            <h4>Dual-Faced</h4>
+            <p class="unit-intro">
+                <em>A grotesque duality, two minds bound by an unspeakable pact, forever echoing each other's pain and triumph. They move as one, yet are two, a paradox of flesh and will. Some say they were once lovers, cursed to share a single, tormented existence. Others claim they are merely the Abyss's cruel joke. Either way, they're surprisingly good at synchronized disembowelment.</em>
+            </p>
+            <p><strong>Movement:</strong> 3</p>
+
+            <h5>Skills:</h5>
+            <ul class="skill-list">
+                <li class="skill-item">
+                    <strong>Shred</strong>
+                    <div class="skill-details">
+                        <p>A brutal melee attack, tearing through foes with synchronized fury.</p>
+                        <p class="dice-roll">Dice Roll: 4-5-6 (d6)</p>
+                        <div class="skill-properties">
+                            <span>Category: Melee Combat</span>
+                            <span>Range: 1 (Adjacent)</span>
+                        </div>
+                    </div>
+                </li>
+                <li class="skill-item">
+                    <strong>Unity</strong>
+                    <div class="skill-details">
+                        <p>Instantly move one Dual-Faced unit to the location of the other, regardless of distance. They are drawn to each other, a morbid magnetic pull.</p>
+                        <p class="dice-roll">Dice Roll: 4-5-6 (d6)</p>
+                        <div class="skill-properties">
+                            <span>Category: Buff</span>
+                            <span>Range: Unlimited</span>
+                        </div>
+                        <div class="tactical-tip">
+                            <strong>Insight:</strong> This skill allows for incredible tactical flexibility. Use it to quickly redeploy both halves of the Dual-Faced unit, either to focus fire on a single target or to cover more ground. It's also a great way to pull one unit out of danger by moving it to its healthier counterpart.
+                        </div>
+                    </div>
+                </li>
+                <li class="skill-item">
+                    <strong>Connection</strong>
+                    <div class="skill-details">
+                        <p>Any effects (positive or negative), as well as death or wounds, apply equally to both linked Dual-Faced units. Both linked units can benefit from trophies collected. Their bond is unbreakable, even by death.</p>
+                        <p class="dice-roll">Dice Roll: None</p>
+                        <div class="skill-properties">
+                            <span>Category: Passive</span>
+                            <span>Range: Self</span>
+                        </div>
+                        <div class="tactical-tip">
+                            <strong>Insight:</strong> This is a double-edged sword. While it means a single wound can cripple both, it also means a single buff or healing effect benefits both. Position them carefully to maximize shared benefits while minimizing shared risks.
+                        </div>
+                    </div>
+                </li>
+            </ul>
+
+            <h5>Trophies:</h5>
+            <ul class="trophy-list">
+                <li class="trophy-item">
+                    <strong>Substance: Stimulant</strong>
+                    <div class="trophy-details">
+                        <p>Grants a +1 bonus to any dice rolls the unit makes, without costing an additional action. A quick jolt to sharpen their shared senses.</p>
+                        <p>Trophy Value: 3</p>
+                        <div class="tactical-tip">
+                            <strong>Insight:</strong> This is a versatile trophy. Use it on a unit about to make a critical attack or skill roll to increase their chances of success.
+                        </div>
+                    </div>
+                </li>
+                <li class="trophy-item">
+                    <strong>Totem: Sharp Spike</strong>
+                    <div class="trophy-details">
+                        <p>A piercing melee attack, delivered with a cruel precision.</p>
+                        <p class="dice-roll">Dice Roll: 4-5-6 (d6)</p>
+                        <p>Trophy Value: 3</p>
+                        <div class="tactical-tip">
+                            <strong>Insight:</strong> A solid offensive trophy. Use it to finish off a wounded enemy or to add extra damage to a melee engagement.
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <div class="unit-card-section chthonid-unit">
+            <h4>Guardian</h4>
+            <p class="unit-intro">
+                <em>A sentinel of forgotten ages, the Guardian bends time itself to its will. Its presence is a ripple in the fabric of causality, undoing mistakes and weaving new destinies. It has seen countless futures, and most of them end badly for you. Don't worry, it's just a prediction. Probably.</em>
+            </p>
+            <p><strong>Movement:</strong> 3</p>
+
+            <h5>Skills:</h5>
+            <ul class="skill-list">
+                <li class="skill-item">
+                    <strong>Time Lord</strong>
+                    <div class="skill-details">
+                        <p>A one of your chthonid unit, as well as all units affected by that target's last action, revert to their initial state for that turn, allowing the friendly target to re-take its turn. It's like pressing the rewind button for a single unit's sequence of events.</p>
+                        <div class="tactical-tip">
+                            <strong>Details:</strong> This skill can **ONLY** target a friendly Chthonid unit, and **ONLY** if that unit has already completed a turn in the current round. All actions performed by the targeted unit, and all immediate consequences (like damage dealt or received, unit destruction, or status effects), are completely reversed. The targeted unit then immediately begins its turn again from the point just before its last action.
+                        </div>
+
+                        <p class="dice-roll">Dice Roll: 4-5-6 (d6)</p>
+                        <div class="skill-properties">
+                            <span>Category: Distortion</span>
+                            <span>Range: 4</span>
+                        </div>
+                        <div class="tactical-tip">
+                            <strong>Insight:</strong> This is an incredibly powerful recovery and tactical tool. Use it to undo a failed crucial skill roll, or to give a high-impact unit a second action if their first wasn't optimal. The ability to affect units affected by the target's action adds another layer of complexity.
+                        </div>
+                    </div>
+                </li>
+                <li class="skill-item">
+                    <strong>Chain Death</strong>
+                    <div class="skill-details">
+                        <p>Damages the target and all units <strong>adjacent to them</strong> in a chain reaction. A ripple of destruction that spreads through the ranks.</p>
+                        <p class="dice-roll">Dice Roll: 4-5-6 (d6)</p>
+                        <div class="skill-properties">
+                            <span>Category: Distortion</span>
+                            <span>Range: 3</span>
+                        </div>
+                        <div class="tactical-tip">
+                            <strong>Insight:</strong> Position the Guardian to hit a cluster of enemies. Remember the "Chained" property means each unit in the radius is affected separately, so it's not a single roll for all. This can be very effective against tightly packed formations.
+                        </div>
+                    </div>
+                </li>
+            </ul>
+
+            <h5>Trophies:</h5>
+            <ul class="trophy-list">
+                <li class="trophy-item">
+                    <strong>Substance: Second Chance</strong>
+                    <div class="trophy-details">
+                        <p>Allows a re-roll of a die. Must be activated before the first roll is resolved. Because even guardians of time need a little luck.</p>
+                        <p>Trophy Value: 3</p>
+                        <div class="tactical-tip">
+                            <strong>Insight:</strong> Save this for crucial dice rolls, especially for your "Time Lord" skill or a high-stakes attack. A well-timed re-roll can turn the tide of battle.
+                        </div>
+                    </div>
+                </li>
+                <li class="trophy-item">
+                    <strong>Totem: Sphere of Chains</strong>
+                    <div class="trophy-details">
+                        <p>Activates the "Chain Death" skill. A focused channeling of destructive energies.</p>
+                        <p>Trophy Value: 3</p>
+                        <div class="tactical-tip">
+                            <strong>Insight:</strong> This trophy allows you to trigger Chain Death as a bonus action, potentially setting up devastating combos with other units or simply getting an extra attack in.
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <div class="unit-card-section chthonid-unit">
+            <h4>Legion</h4>
+            <p class="unit-intro">
+                <em>A shifting, amorphous entity, the Legion is not one, but many. It can absorb the essence of others, becoming a twisted reflection of its foes. They say it was once a single, proud warrior, but the Abyss broke its mind into a thousand fragments, each yearning for a new form. It's like a cosmic chameleon, but with more existential dread.</em>
+            </p>
+            <p><strong>Movement:</strong> 3</p>
+
+            <h5>Skills:</h5>
+            <ul class="skill-list">
+                <li class="skill-item">
+                    <strong>Castling</strong>
+                    <div class="skill-details">
+                        <p>Swap positions any 2 unit (including Legion himself) within a radius of 3. A sudden, disorienting shift on the battlefield.</p>
+                        <p class="dice-roll">Dice Roll: 4-5-6 (d6)</p>
+                        <div class="skill-properties">
+                            <span>Category: Distortion</span>
+                            <span>Radius: 3</span>
+                        </div>
+                        <div class="tactical-tip">
+                            <strong>Insight:</strong> This is a versatile tactical repositioning tool. Use it to pull an injured ally out of danger, to place a powerful melee unit directly into the fray, or even to move an enemy unit out of a crucial position.
+                        </div>
+                    </div>
+                </li>
+                <li class="skill-item">
+                    <strong>Thousand Faces</strong>
+                    <div class="skill-details">
+                        <p>The Legion unit takes on the appearance and all skills of a target unit within range 3. For a brief, terrifying moment, it becomes its enemy.</p>
+                        <p class="dice-roll">Dice Roll: 4-5-6 (d6)</p>
+                        <div class="skill-properties">
+                            <span>Category: Buff</span>
+                            <span>Range: 3</span>
+                        </div>
+                        <div class="tactical-tip">
+                            <strong>Insight:</strong> This is a highly versatile skill. Copy a powerful enemy unit's offensive skill to turn their strengths against them, or a defensive one if you need to survive. The possibilities are endless, and terrifying.
+                        </div>
+                    </div>
+                </li>
+            </ul>
+
+            <h5>Trophies:</h5>
+            <ul class="trophy-list">
+                <li class="trophy-item">
+                    <strong>Substance: Second Chance</strong>
+                    <div class="trophy-details">
+                        <p>Allows a re-roll of a die. Must be activated before the first roll is resolved. Even a thousand faces can't hide from bad luck without a little help.</p>
+                        <p>Trophy Value: 3</p>
+                        <div class="tactical-tip">
+                            <strong>Insight:</strong> Crucial for ensuring your "Thousand Faces" transformation succeeds, or for any other vital skill roll.
+                        </div>
+                    </div>
+                </li>
+                <li class="trophy-item">
+                    <strong>Totem: Transformation</strong>
+                    <div class="trophy-details">
+                        <p>Activates the "Thousand Faces" skill. The Legion's true nature revealed, or perhaps, concealed.</p>
+                        <p>Trophy Value: 3</p>
+                        <div class="tactical-tip">
+                            <strong>Insight:</strong> This trophy allows you to trigger Thousand Faces as a buff, enabling quick tactical shifts and unexpected skill usage.
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <div class="unit-card-section chthonid-unit">
+            <h4>Arcanum</h4>
+            <p class="unit-intro">
+                <em>A master of the Abyss's arcane energies, the Arcanum weaves spells of paralysis and control. It can even coax the wild Savages into its service, a testament to its unsettling power. Its eyes glow with ancient, forbidden knowledge, and its whispers can unravel a mind. It's like a very persuasive librarian, if the library was made of screaming souls.</em>
+            </p>
+            <p><strong>Movement:</strong> 3</p>
+
+            <h5>Skills:</h5>
+            <ul class="skill-list">
+                <li class="skill-item">
+                    <strong>Menagerie</strong>
+                    <div class="skill-details">
+                        <p>Summon a Savage unit from the deck into your squad. A maximum of 1 Savage can be controlled this way at any time. A new pet for the collection, how delightful!</p>
+                        <p class="dice-roll">Dice Roll: 4-5-6 (d6)</p>
+                        <div class="skill-properties">
+                            <span>Category: Summoning</span>
+                            <span>Range: 1 (Adjacent for placement)</span>
+                        </div>
+                        <div class="tactical-tip">
+                            <strong>Insight:</strong> This is a fantastic way to gain a powerful, albeit unpredictable, ally. Use the Savage to absorb damage or deal extra blows. Remember its limitations (cannot leave segment, cannot take trophies).
+                        </div>
+                    </div>
+                </li>
+                <li class="skill-item">
+                    <strong>Paralyzing Strike</strong>
+                    <div class="skill-details">
+                        <p>The target skips its next turn. 
+                            This skill can hit through another unit <strong>Ignores Line of Sight</strong> (can strike through another unit without being blocked). 
+                            A swift, debilitating blow that leaves foes helpless.
+                        </p>
+                        <p class="dice-roll">Dice Roll: 4-5-6 (d6)</p>
+                        <div class="skill-properties">
+                            <span>Category: Melee Combat</span>
+                            <span>Range: 2</span>
+                        </div>
+                        <div class="tactical-tip">
+                            <strong>Insight:</strong> Excellent for disabling dangerous melee units or preventing an enemy from reaching an objective. The ability to hit through another unit adds tactical flexibility, allowing you to target backline threats.
+                        </div>
+                    </div>
+                </li>
+            </ul>
+
+            <h5>Trophies:</h5>
+            <ul class="trophy-list">
+                <li class="trophy-item">
+                    <strong>Substance: Liqueur</strong>
+                    <div class="trophy-details">
+                        <p>Revives a wounded unit. The revived unit skips its next turn. A healing touch, though not without its cost.</p>
+                        <p>Trophy Value: 3</p>
+                        <div class="tactical-tip">
+                            <strong>Insight:</strong> A crucial support trophy. Use it to bring back a key unit, but remember they lose their next turn, so plan accordingly.
+                        </div>
+                    </div>
+                </li>
+                <li class="trophy-item">
+                    <strong>Totem: Paralyzer</strong>
+                    <div class="trophy-details">
+                        <p>The target skips its next turn. A focused burst of paralyzing energy.</p>
+                        <p class="dice-roll">Dice Roll: 4-5-6 (d6)</p>
+                        <p>Trophy Value: 3</p>
+                        <div class="tactical-tip">
+                            <strong>Insight:</strong> A direct control trophy. Use it to lock down a single, high-threat enemy for a turn, buying your other units time.
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <div class="unit-card-section chthonid-unit">
+            <h4>Deathleaper</h4>
+            <p class="unit-intro">
+                <em>A blur of motion and malice, the Deathleaper is a living weapon, tearing through the battlefield with impossible speed. It leaves a trail of shredded foes in its wake, a testament to its brutal efficiency. Some say it's a living paradox, existing in multiple places at once, just long enough to inflict damage. It's like a very angry, very sharp ghost.</em>
+            </p>
+            <p><strong>Movement:</strong> 4</p>
+
+            <h5>Skills:</h5>
+            <ul class="skill-list">
+                <li class="skill-item">
+                    <strong>Vacuum</strong>
+                    <div class="skill-details">
+                        <p>The target skips its turn and becomes <strong>Immune to all effects and targeting</strong>. They simply cease to exist for a brief, terrifying moment, only to return disoriented.</p>
+                        <p class="dice-roll">Dice Roll: 4-5-6 (d6)</p>
+                        <div class="skill-properties">
+                            <span>Category: Distortion</span>
+                        </div>
+                        <div class="tactical-tip">
+                            <strong>Insight:</strong> Use this to temporarily remove a dangerous enemy from play, or to protect a vulnerable ally from an incoming attack. It's a powerful disruption tool, allowing you to isolate threats or buy time.
+                        </div>
+                    </div>
+                </li>
+                <li class="skill-item">
+                    <strong>Piercing Leap</strong>
+                    <div class="skill-details">
+                        <p>
+                            As the Deathleaper moves to a target cell (up to 4 cells away), it deals piercing damage to all units in its path. 
+                            <br>Leap should be finished on empty cell
+                            <br>Point 3 other cells of path
+                            <br>Deal damage to all units in its path
+                            <br>Roll for each unit in its path <small class="dice-roll">Dice Roll: 4-5-6 (d6)</small>
+                        </p>
+                        <p class="dice-roll">Skill Activation Dice Roll: 3-4-5-6 (d6)</p>
+                        <div class="skill-properties">
+                            <span>Category: Distortion</span>
+                            <span>Range: 4</span>
+                        </div>
+                        <div class="tactical-tip">
+                            <strong>Insight:</strong> This is a fantastic offensive movement skill. Line up your leap to hit multiple enemies, wounding them as you pass through. It's excellent for breaking up enemy formations or finishing off multiple weakened foes.
+                        </div>
+                    </div>
+                </li>
+            </ul>
+
+            <h5>Trophies:</h5>
+            <ul class="trophy-list">
+                <li class="trophy-item">
+                    <strong>Substance: Liqueur</strong>
+                    <div class="trophy-details">
+                        <p>Revives a wounded unit. The revived unit skips its next turn. A brief respite from the Abyss's embrace.</p>
+                        <p>Trophy Value: 3</p>
+                        <div class="tactical-tip">
+                            <strong>Insight:</strong> Even a harbinger of death can offer a helping hand. Use this to keep your key units in the fight, especially if they are critical for your strategy.
+                        </div>
+                    </div>
+                </li>
+                <li class="trophy-item">
+                    <strong>Totem: Scroll of Vacuum</strong>
+                    <div class="trophy-details">
+                        <p>Activate the "Vacuum" skill.</p>
+                        <p class="dice-roll">Dice Roll: 4-5-6 (d6)</p>
+                        <p>Trophy Value: 3</p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <div class="unit-card-section chthonid-unit">
+            <h4>Gravekeeper</h4>
+            <p class="unit-intro">
+                <em>A monstrous scavenger from the depths, the Gravekeeper is both feared and revered among the Chthonids. Its armored maw devours the fallen, and its venomous breath can pierce through the thickest ranks. Legends say it can snatch the dying from the jaws of death—or from the hands of their would-be killers. Where the Gravekeeper prowls, the boundary between life and death is thin, and the battlefield is never truly at rest.</em>
+            </p>
+            <p><strong>Movement:</strong> 3</p>
+
+            <h5>Skills:</h5>
+            <ul class="skill-list">
+                <li class="skill-item">
+                    <strong>Corpse Venom</strong>
+                    <div class="skill-details">
+                        <p>Unleashes a toxic projectile that pierces through up to 2 cells in a straight line. Hits every unit in its straight line single roll.</p>
+                        <p class="dice-roll">Dice Roll: 4-5-6 (d6)</p>
+                        <div class="skill-properties">
+                            <span>Category: Ranged Combat</span>
+                            <span>Range: 2</span>
+                        </div>
+                        <div class="tactical-tip">
+                            <strong>Insight:</strong> Use this to strike at enemies hiding behind their allies, or to finish off a wounded foe protected by a frontline. Positioning is key to maximize the number of targets hit.
+                        </div>
+                    </div>
+                </li>
+                <li class="skill-item">
+                    <strong>Carrion Eater</strong>
+                    <div class="skill-details">
+                        <p>May retrieve 1 wounded unit from anywhere within range 5 and place it adjacent to the Gravekeeper. This can be used on both allies and enemies.</p>
+                        <p class="dice-roll">Dice Roll: 4-5-6 (d6)</p>
+                        <div class="skill-properties">
+                            <span>Category: Distortion</span>
+                            <span>Range: 5</span>
+                        </div>
+                        <div class="tactical-tip">
+                            <strong>Insight:</strong> Use this to rescue a wounded ally from danger, deny an enemy a trophy, or bring a vulnerable foe within striking distance. The Gravekeeper's reach can change the fate of the fallen in an instant.
+                        </div>
+                    </div>
+                </li>
+            </ul>
+
+            <h5>Trophies:</h5>
+            <ul class="trophy-list">
+                <li class="trophy-item">
+                    <strong>Substance: Second Chance</strong>
+                    <div class="trophy-details">
+                        <p>Allows a re-roll of a die. Must be activated before the first roll is resolved. Even the Gravekeeper knows that fate sometimes deserves a do-over.</p>
+                        <p>Trophy Value: 3</p>
+                        <div class="tactical-tip">
+                            <strong>Insight:</strong> Use this for critical skill rolls, especially for your piercing attack or to secure a key rescue or denial.
+                        </div>
+                    </div>
+                </li>
+                <li class="trophy-item">
+                    <strong>Totem: Teleport</strong>
+                    <div class="trophy-details">
+                        <p>Teleports a unit to any point within a radius of 3. A sudden, disorienting shift through the Abyss.</p>
+                        <p class="dice-roll">Dice Roll: 4-5-6 (d6)</p>
+                        <p>Trophy Value: 3</p>
+                        <div class="tactical-tip">
+                            <strong>Insight:</strong> Use this to reposition a key unit, escape danger, or set up a surprise attack. The Gravekeeper's trophies are as unpredictable as the Abyss itself.
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <h2>The Fungoids</h2>
+        <p>
+            A race of beings inhabiting the Abyss since the dawn of its existence. After world-altering events, the Fungoids were scattered across the planet, severing their intricate informational networks. This led to the formation of several large and numerous small enclaves. These enclaves were forced to act independently, yet their ultimate goal remained unchanged: to weave a network across the entire world, not caring about the complexities introduced by foreign biomass. Large enclaves now exist on different sides of the planet, separated by vast distances and enemies. Each enclave received the same fundamental knowledge base from their global ancestor, but each found itself in a unique environment, and lacking connections, each developed its own distinct evolutionary path. They are the silent, creeping conquerors, and their spores will eventually cover everything. Resistance is, as they say, futile.
+        </p>
+
+        <h4>Racial Ability: Spore Rebirth</h4>
+        <p>
+            Once per round, by rolling a d6 and achieving a result of 3, 4, 5, or 6, a player can replace a wounded Fungoid unit from their squad with any Fungoid unit from their faction deck. The newly spawned unit immediately takes its turn.
+        </p>
+        <div class="tactical-tip">
+            <strong>Insight:</strong> This is a powerful recovery and tactical flexibility tool. Use it to bring a fresh, healthy unit into play, or to swap in a unit with a skill better suited to the current situation. It allows Fungoids to maintain board presence even after taking heavy losses.
+        </div>
+
+        <h4>Faction Feature: Organic Vulnerability</h4>
+        <p>
+            Units of this faction can be wounded without using explicit attacking skills; simply ending a turn adjacent to them is enough to cause a wound. (Player declares aloud that their unit is spending its turn to wound the target).
+        </p>
+        <div class="humor-quote">
+            <em>"They're not weak, they're... absorbent. And a little squishy. But mostly absorbent. Just try not to get too close, unless you enjoy being a compost heap." - A Human Scout, moments before being engulfed by a fungal growth.</em>
+        </div>
+        <div class="tactical-tip">
+            <strong>Insight:</strong> Be mindful of this vulnerability when positioning your Fungoid units. Keep them away from strong melee units or use their control skills to keep enemies at bay. This encourages a more defensive or controlling playstyle.
+        </div>
+
+        <h4>Control Skill Mechanics</h4>
+        <p>
+            When a unit is captured by a Fungoid control skill, it cannot move until the next round. Control is lost if the controlling Fungoid unit is wounded or if the controlled unit moves beyond the control range (which is equal to the skill's range, as indicated on the Fungoid unit's card).
+        </p>
+        <div class="tactical-tip">
+            <strong>Insight:</strong> Control skills are the Fungoids' bread and butter. Use them to disable key enemy units, turn foes against each other, or simply prevent them from reaching objectives. Mastering their range and duration is key to a successful Fungoid strategy.
+        </div>
+
+        <h3>Fungoid Units</h3>
+
+        <div class="unit-card-section fungoid-unit">
+            <h4>Mistwalker</h4>
+            <p class="unit-intro">
+                <em>A master of illusions and mental manipulation, the Mistwalker weaves a veil of deceit across the battlefield. Its whispers plant seeds of doubt, turning allies against each other. It's not that they're evil, they just find human minds terribly amusing to break. And they're very good at it.</em>
+            </p>
+            <p><strong>Movement:</strong> 3</p>
+
+            <h5>Skills:</h5>
+            <ul class="skill-list">
+                <li class="skill-item">
+                    <strong>Hallucinations</strong>
+                    <div class="skill-details">
+                        <p>The target immediately uses its combat (Melee, Ranged, or Distortion with damage effect) skill against the nearest unit.
+                            <br>You should roll dice (if needed) according to the skill description.
+                        </p>
+                        <p class="dice-roll">Dice Roll: 4-5-6 (d6)</p>
+                        <div class="skill-properties">
+                            <span>Category: Distortion</span>
+                            <span>Range: 4</span>
+                        </div>
+                        <div class="tactical-tip">
+                            <strong>Insight:</strong> This is a powerful disruption tool. Force an enemy to attack their own allies.
+                        </div>
+                    </div>
+                </li>
+                <li class="skill-item">
+                    <strong>Mold</strong>
+                    <div class="skill-details">
+                        <p>Depends on the target long-term effect might be: 
+                            <br>+1 to an <strong>allied</strong> unit's dice roll
+                            <br>-1 from an <strong>enemy</strong> unit's dice roll
+                        </p>
+                        <p class="dice-roll">Dice Roll: 4-5-6 (d6)</p>
+                        <div class="skill-properties">
+                            <span>Category: Distortion</span>
+                            <span>Range: 3</span>
+                            <span>Property: Persistent</span>
+                        </div>
+                        <div class="tactical-tip">
+                            <strong>Insight:</strong> This is a powerful disruption tool. Force an enemy to attack their own allies.
+                        </div>
+                    </div>
+                </li>
+            </ul>
+
+            <h5>Trophies:</h5>
+            <ul class="trophy-list">
+                <li class="trophy-item">
+                    <strong>Substance: Liqueur</strong>
+                    <div class="trophy-details">
+                        <p>Revives a wounded unit adjacent to the Mistwalker. The revived unit skips its next turn. A fungal balm for the wounded.</p>
+                        <p>Trophy Value: 3</p>
+                        <div class="tactical-tip">
+                            <strong>Insight:</strong> A valuable support trophy for keeping your Fungoid swarm alive. It's a quick way to get a unit back into the fight, even if they miss a turn.
+                        </div>
+                    </div>
+                </li>
+                <li class="trophy-item">
+                    <strong>Totem: Hallucinogen</strong>
+                    <div class="trophy-details">
+                        <p>Provokes hallucinations (distortions) in the target. A concentrated dose of mental chaos.</p>
+                        <p class="dice-roll">Dice Roll: 4-5-6 (d6)</p>
+                        <p>Trophy Value: 3</p>
+                        <div class="tactical-tip">
+                            <strong>Insight:</strong> This trophy allows you to trigger Hallucinations as a bonus action, making the Mistwalker even more disruptive in a single turn.
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <div class="unit-card-section fungoid-unit">
+            <h4>Web-Weaver</h4>
+            <p class="unit-intro">
+                <em>A silent hunter, the Web-Weaver ensnares its prey not with physical webs, but with tendrils of psychic control. It can even reanimate the fallen, turning them into puppets for its fungal master. Don't look too closely at the eyes of its victims; you might see your own reflection, staring back with an unsettling blankness.</em>
+            </p>
+            <p><strong>Movement:</strong> 2</p>
+
+            <h5>Skills:</h5>
+            <ul class="skill-list">
+                <li class="skill-item">
+                    <strong>Control</strong>
+                    <div class="skill-details">
+                        <p>Revives and takes control of 1 wounded unit. The newly controlled unit becomes your pawn. A twisted form of necromancy, fungal style.</p>
+                        <p class="dice-roll">Dice Roll: 4-5-6 (d6)</p>
+                        <div class="skill-properties">
+                            <span>Category: Distortion</span>
+                            <span>Range: 4</span>
+                            <span>Property: Persistent</span>
+                        </div>
+                        <div class="tactical-tip">
+                            <strong>Insight:</strong> This is a game-changer. Revive a powerful enemy unit and turn them against their former allies. Remember that control is lost if the Web-Weaver is wounded, so protect your controller!
+                        </div>
+                    </div>
+                </li>
+                <li class="skill-item">
+                    <strong>Parasites</strong>
+                    <div class="skill-details">
+                        <p>Takes control of up to 2 Savage units. Their minds are weak, their bodies strong. A perfect combination for a Fungoid master.</p>
+                        <p class="dice-roll">Dice Roll: 4-5-6 (d6)</p>
+                        <div class="skill-properties">
+                            <span>Category: Distortion</span>
+                            <span>Range: 4</span>
+                            <span>Property: Persistent</span>
+                        </div>
+                        <div class="tactical-tip">
+                            <strong>Insight:</strong> Controlling Savages is a huge advantage. Use them to overwhelm enemies or secure objectives. Remember the Control skill restrictions (cannot go out of controller range, no trophies). This can quickly swing the numbers in your favor.
+                        </div>
+                    </div>
+                </li>
+            </ul>
+
+            <h5>Trophies:</h5>
+            <ul class="trophy-list">
+                <li class="trophy-item">
+                    <strong>Substance: Stimulant</strong>
+                    <div class="trophy-details">
+                        <p>Grants a +1 bonus to any dice rolls the unit makes, without costing an additional action. A little fungal boost.</p>
+                        <p>Trophy Value: 2</p>
+                        <div class="tactical-tip">
+                            <strong>Insight:</strong> Crucial for increasing the success rate of your powerful "Control" or "Parasites" skills. Use it before attempting a critical control roll.
+                        </div>
+                    </div>
+                </li>
+                <li class="trophy-item">
+                    <strong>Totem: Spores</strong>
+                    <div class="trophy-details">
+                        <p>Activates the "Control" skill. A cloud of mind-altering spores, ready to bend wills.</p>
+                        <p class="dice-roll">Dice Roll: 4-5-6 (d6)</p>
+                        <p>Trophy Value: 2</p>
+                        <div class="tactical-tip">
+                            <strong>Insight:</strong> This trophy allows you to trigger Control as a bonus action, making the Web-Weaver even more potent in a single turn.
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <div class="unit-card-section fungoid-unit">
+            <h4>Sporocyte</h4>
+            <p class="unit-intro">
+                <em>The ultimate infiltrator, the Sporocyte sheds its own form to possess another, becoming a grotesque mimic of its victim. It is a parasitic horror, devouring identity and replacing it with fungal will. One day, it will be you. And you won't even know it.</em>
+            </p>
+            <p><strong>Movement:</strong> 3</p>
+
+            <h5>Skills:</h5>
+            <ul class="skill-list">
+                <li class="skill-item">
+                    <strong>Parasitism</strong>
+                    <div class="skill-details">
+                        <p>Takes control of a target unit. 
+                            <br>Token of target unit controlled by Sporocyte.
+                            <br>Sporocyte token is removed. But implies that unit inside of controlled unit is still there (means you cannot get another Sporocyte in game).
+                            <br>All skills and features of the "victim" unit, plus "Parasitism," are now available to the controlled unit.
+                        </p>
+                        <p class="dice-roll">Dice Roll: 4-5-6 (d6)</p>
+                        <div class="skill-properties">
+                            <span>Category: Melee Combat</span>
+                            <span>Range: 1 (Adjacent)</span>
+                            <span>Property: Persistent</span>
+                        </div>
+                        <div class="tactical-tip">
+                            <strong>Insight:</strong> This is a high-risk, high-reward skill. Possess a powerful enemy unit to use their strengths against them. Be careful, as losing the host means losing the Sporocyte. This is a true game-changer if used correctly.
+                        </div>
+                    </div>
+                </li>
+            </ul>
+
+            <h5>Trophies:</h5>
+            <ul class="trophy-list">
+                <li class="trophy-item">
+                    <strong>Substance: Second Chance</strong>
+                    <div class="trophy-details">
+                        <p>Allows a re-roll of a die. Must be activated before the first roll is resolved. Even parasites need a second try sometimes.</p>
+                        <p>Trophy Value: 3</p>
+                        <div class="tactical-tip">
+                            <strong>Insight:</strong> Crucial for ensuring your "Parasitism" skill succeeds, as its failure can be devastating. This is a trophy you want to save for that one critical moment.
+                        </div>
+                    </div>
+                </li>
+                <li class="trophy-item">
+                    <strong>Totem: Mutagen</strong>
+                    <div class="trophy-details">
+                        <p>Assumes the form and skills of the target unit within range 3. A less permanent, but still potent, form of mimicry.</p>
+                        <p class="dice-roll">Dice Roll: 4-5-6 (d6)</p>
+                        <p>Trophy Value: 3</p>
+                        <div class="tactical-tip">
+                            <strong>Insight:</strong> Use this to temporarily gain a key skill from an enemy or ally without the risks of full Parasitism. Great for a quick burst of a specific ability you need.
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <div class="unit-card-section fungoid-unit">
+            <h4>Firefly</h4>
+            <p class="unit-intro">
+                <em>A deceptively delicate Fungoid, the Firefly dances through the air, its glowing spores planting seeds of confusion and control in the minds of its enemies. It can even bend the will of Savages, turning their primal rage into a weapon for the Fungoid collective. Its light is beautiful, but its touch is insidious. And it probably hums a little.</em>
+            </p>
+            <p><strong>Movement:</strong> 3</p>
+
+            <h5>Skills:</h5>
+            <ul class="skill-list">
+                <li class="skill-item">
+                    <strong>Daze</strong>
+                    <div class="skill-details">
+                        <p>Takes control of a unit's movement within range 4. The target stumbles, unable to direct its own steps.</p>
+                        <p class="dice-roll">Dice Roll: 3-4-5-6 (d6)</p>
+                        <div class="skill-properties">
+                            <span>Category: Distortion</span>
+                            <span>Range: 4</span>
+                        </div>
+                        <div class="tactical-tip">
+                            <strong>Insight:</strong> Excellent for preventing an enemy from reaching a critical location or escaping a trap. Combine with other units to corner your dazed foe, making them easy pickings.
+                        </div>
+                    </div>
+                </li>
+                <li class="skill-item">
+                    <strong>Parasites</strong>
+                    <div class="skill-details">
+                        <p>Takes control of up to 2 Savage units within range 4. Their primal instincts are now yours to command.</p>
+                        <p class="dice-roll">Dice Roll: 4-5-6 (d6)</p>
+                        <div class="skill-properties">
+                            <span>Category: Distortion</span>
+                            <span>Range: 4</span>
+                            <span>Property: Persistent</span>
+                        </div>
+                        <div class="tactical-tip">
+                            <strong>Insight:</strong> Similar to the Web-Weaver's skill, this is a great way to gain temporary, powerful allies. Having two controlled Savages can drastically increase your board presence and damage output.
+                        </div>
+                    </div>
+                </li>
+            </ul>
+
+            <h5>Trophies:</h5>
+            <ul class="trophy-list">
+                <li class="trophy-item">
+                    <strong>Substance: Power Solution</strong>
+                    <div class="trophy-details">
+                        <p>Allows the Firefly to use two of its abilities during its turn. A burst of fungal energy, allowing for double the mischief.</p>
+                        <p>Trophy Value: 3</p>
+                        <div class="tactical-tip">
+                            <strong>Insight:</strong> This is incredibly powerful. Use it to chain "Daze" and "Parasites" in a single turn, or to move and then use a control skill. It maximizes the Firefly's impact in a single turn.
+                        </div>
+                    </div>
+                </li>
+                <li class="trophy-item">
+                    <strong>Totem: Dazes</strong>
+                    <div class="trophy-details">
+                        <p>Activates the "Daze" skill. A swift, silent command to confuse the enemy.</p>
+                        <p>Dice Roll: 4-5-6 (d6)</p>
+                        <p>Trophy Value: 3</p>
+                        <div class="tactical-tip">
+                            <strong>Insight:</strong> This trophy likely allows for a free activation of Daze, making the Firefly a highly disruptive unit. Use it to lock down a critical enemy unexpectedly.
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <div class="unit-card-section fungoid-unit">
+            <h4>Fungus Queen</h4>
+            <p class="unit-intro">
+                <em>The matriarch of the fungal collective, the Fungus Queen is a living incubator, constantly spawning new horrors to overwhelm her foes. She is a grotesque monument to proliferation, and her children are legion. Don't worry, they only want to hug you... with spores. And then explode.</em>
+            </p>
+            <p><strong>Movement:</strong> 2</p>
+
+            <h5>Skills:</h5>
+            <ul class="skill-list">
+                <li class="skill-item">
+                    <strong>Microphage</strong>
+                    <div class="skill-details">
+                        <p>Spawns a Microphage unit. A maximum of 3 spawned units (from all sources) can be on the map simultaneously. A new, hungry mouth for the swarm.</p>
+                        <p class="dice-roll">Dice Roll: 4-5-6 (d6)</p>
+                        <div class="skill-properties">
+                            <span>Category: Summoning</span>
+                            <span>Range: 1 (Adjacent for placement)</span>
+                        </div>
+                        <div class="tactical-tip">
+                            <strong>Insight:</strong> Microphages are excellent for area denial and finishing off wounded enemies. Continuously spawn them to maintain pressure and force enemies to deal with multiple threats.
+                        </div>
+                    </div>
+                </li>
+                <li class="skill-item">
+                    <strong>Sporophage Spit</strong>
+                    <div class="skill-details">
+                        <p>Spit a Sporophage projectile at a target within range 3. A burst of corrosive spores.</p>
+                        <p class="dice-roll">Dice Roll: 4-5-6 (d6)</p>
+                        <div class="skill-properties">
+                            <span>Category: Summoning</span>
+                            <span>Range: 3</span>
+                        </div>
+                        <div class="tactical-tip">
+                            <strong>Insight:</strong> Provides the Fungus Queen with a much-needed ranged attack, allowing her to contribute from a distance while spawning units. Use it to support your advancing Microphages.
+                        </div>
+                    </div>
+                </li>
+                <li class="skill-item">
+                    <strong>Spawn Limit</strong>
+                    <div class="skill-details">
+                        <p>A maximum of 3 spawned units (for this unit) can be on the map simultaneously.</p>
+                        <div class="skill-properties">
+                            <span>Category: Passive</span>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+
+            <h5>Trophies:</h5>
+            <ul class="trophy-list">
+                <li class="trophy-item">
+                    <strong>Substance: Liqueur</strong>
+                    <div class="trophy-details">
+                        <p>Revives a wounded unit adjacent to the Fungus Queen. The revived unit skips its next turn. A mother's touch, even if that mother is a giant mushroom.</p>
+                        <p>Trophy Value: 2</p>
+                        <div class="tactical-tip">
+                            <strong>Insight:</strong> Essential for keeping your Fungoid units, especially other key spawners, alive. A well-timed revival can turn the tide of a skirmish.
+                        </div>
+                    </div>
+                </li>
+                <li class="trophy-item">
+                    <strong>Totem: Germination</strong>
+                    <div class="trophy-details">
+                        <p>Sprouts one of the spawned units, bringing it to life. The cycle of life and decay continues.</p>
+                        <p class="dice-roll">Dice Roll: 4-5-6 (d6)</p>
+                        <p>Trophy Value: 2</p>
+                        <div class="tactical-tip">
+                            <strong>Insight:</strong> This trophy likely allows for a free activation of Microphage, enabling you to quickly reinforce your forces or create a new threat.
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <div class="unit-card-section fungoid-unit">
+            <h4>Rotting One</h4>
+            <p class="unit-intro">
+                <em>A decaying, yet surprisingly agile Fungoid, the Rotting One spreads debilitating spores that entangle foes and neutralize their attacks. It can even transfer its own abilities to its fungal brethren, a true master of fungal synergy. It smells terrible, but its heart is in the right place... somewhere in its mycelial network. And it's probably judging your life choices.</em>
+            </p>
+            <p><strong>Movement:</strong> 2</p>
+
+            <h5>Skills:</h5>
+            <ul class="skill-list">
+                <li class="skill-item">
+                    <strong>Delegation</strong>
+                    <div class="skill-details">
+                        <p>Transfers 1 skill from any Fungoid unit to another Fungoid unit within range 4. The transferred skill gains the "One-Time" property.
+                            <br>If applied to the self - Rotting One, in case of success turn of the Rotting One is NOT ended.
+                        </p>
+                        <p class="dice-roll">Dice Roll: 3-4-5-6 (d6)</p>
+                        <div class="skill-properties">
+                            <span>Category: Distortion</span>
+                            <span>Range: 4</span>
+                        </div>
+                        <div class="tactical-tip">
+                            <strong>Insight:</strong> This is a unique support skill. Give a powerful offensive skill to a unit that can immediately use it, or a defensive skill to a unit in danger.
+                        </div>
+                    </div>
+                </li>
+                <li class="skill-item">
+                    <strong>Bonds</strong>
+                    <div class="skill-details">
+                        <p>Neutralizes melee combat within a radius of 2. Enemies are ensnared by invisible fungal tendrils, unable to strike effectively.</p>
+                        <p class="dice-roll">Dice Roll: 4-5-6 (d6)</p>
+                        <div class="skill-properties">
+                            <span>Category: Distortion</span>
+                            <span>Radius: 2</span>
+                        </div>
+                        <div class="tactical-tip">
+                            <strong>Insight:</strong> Excellent for protecting your more vulnerable ranged or support units from melee threats. Cast this in choke points or around your backline to create a defensive zone.
+                        </div>
+                    </div>
+                </li>
+            </ul>
+
+            <h5>Trophies:</h5>
+            <ul class="trophy-list">
+                <li class="trophy-item">
+                    <strong>Substance: Stimulant</strong>
+                    <div class="trophy-details">
+                        <p>Grants a +1 bonus to any dice rolls the unit makes, without costing an additional action. A quick fungal energy shot.</p>
+                        <p>Trophy Value: 2</p>
+                        <div class="tactical-tip">
+                            <strong>Insight:</strong> Use this to ensure your "Delegation" or "Bonds" skills land successfully, especially when the outcome is critical.
+                        </div>
+                    </div>
+                </li>
+                <li class="trophy-item">
+                    <strong>Totem: Intangibility</strong>
+                    <div class="trophy-details">
+                        <p>Activates the "Bonds" skill. A momentary shimmer, and then the bonds are cast.</p>
+                        <p>Dice Roll: 4-5-6 (d6)</p>
+                        <p>Trophy Value: 2</p>
+                        <div class="tactical-tip">
+                            <strong>Insight:</strong> This trophy likely allows for a free activation of Bonds, making the Rotting One a potent area controller. Use it to surprise enemies who think they have a clear path.
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <div class="unit-card-section fungoid-unit">
+            <h4>Microphage (Spawned Unit)</h4>
+            <p class="unit-intro">
+                <em>A small, aggressive fungal growth, the Microphage exists only to consume and explode. It is the disposable infantry of the Fungoid collective, surprisingly effective in its brief, violent existence. Its life is short, brutish, and explosive. And it smells faintly of cheese.</em>
+            </p>
+            <p><strong>Movement:</strong> 2</p>
+
+            <h5>Skills:</h5>
+            <ul class="skill-list">
+                <li class="skill-item">
+                    <strong>Explosion</strong>
+                    <div class="skill-details">
+                        <p>Detonates, dealing damage to non-Fungoid units within a radius of 1. This leads to the Microphage's self-destruction. A messy, but effective, end.</p>
+                        <p class="dice-roll">Dice Roll: 4-5-6 (d6)</p>
+                        <div class="skill-properties">
+                            <span>Category: Distortion</span>
+                            <span>Radius: 1</span>
+                            <span>Property: Action After Movement, Suicide, Area Effect</span>
+                        </div>
+                        <div class="tactical-tip">
+                            <strong>Insight:</strong> Use Microphages to finish off wounded enemies, or to clear out clusters of weaker foes. Remember they explode after moving, so position them carefully to maximize impact and avoid friendly fire.
+                        </div>
+                    </div>
+                </li>
+                <li class="skill-item">
+                    <strong>Fast Death</strong>
+                    <div class="skill-details">
+                        <p>Immediately triggers "Explosion." The Microphage is eager to fulfill its purpose.</p>
+                        <p class="dice-roll">Dice Roll: None</p>
+                        <div class="skill-properties">
+                            <span>Category: Passive</span>
+                            <span>Range: Self</span>
+                        </div>
+                        <div class="tactical-tip">
+                            <strong>Insight:</strong> This is a passive trigger. Ensure you understand when it activates to maximize its impact. It means a Microphage is always a threat once it's in position.
+                        </div>
+                    </div>
+                </li>
+            </ul>
+
+            <h5>No Trophies</h5>
+        </div>
+
+        <div class="unit-card-section fungoid-unit">
+            <h4>Sporophage (Spawned Unit)</h4>
+            <p class="unit-intro">
+              <em>A formidable fungal creation, the Sporophage is a mobile artillery unit capable of debilitating foes and rapidly expanding the Fungoid presence on the battlefield. Its unique ability to split upon injury ensures a continuous, self-replicating threat.</em>
+            </p>
+            <p><strong>Combat Stat:</strong> 3</p>
+          
+            <h5>Skills:</h5>
+            <ul class="skill-list">
+                <li class="skill-item">
+                    <strong>Paralysis</strong>
+                    <div class="skill-details">
+                        <p>All non-Fungoid units within a radius of 1 are lost they turn.</p>
+                        <p class="dice-roll">Dice Roll: 4-5-6 (d6)</p>
+                        <div class="skill-properties">
+                            <span>Source: Distortion</span>
+                            <span>Radius: 1</span>
+                            <span>Property: Area Effect</span>
+                            <span>Property: Action After Movement</span>
+                        </div>
+                        <div class="tactical-tip">
+                            <strong>Insight:</strong> Use Microphages to finish off wounded enemies, or to clear out clusters of weaker foes. Remember they explode after moving, so position them carefully to maximize impact and avoid friendly fire.
+                        </div>
+                    </div>
+                </li>
+                <li class="skill-item">
+                    <strong>Fast Death</strong>
+                    <div class="skill-details">
+                        <p>Dies immediately after damage is taken</p>
+                        <p class="dice-roll">Dice Roll: None</p>
+                        <div class="skill-properties">
+                            <span>Category: Passive</span>
+                            <span>Range: Self</span>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+
+            <h5>No Trophies</h5>
+        </div>
+
+        <h2>The Humans</h2>
+        <p>
+            The Dominion of the British Empire, an outpost of humanity, represents a technocratic, militaristic society. It serves as a launching pad for the conquest of alien worlds. A new landscape, unknown life forms, fossils with unpredictable reactive effects, and an aggressive living environment failed to break the Dominion. The exploratory spirit of its scientists and humanity's eternal thirst for development not only adapted mankind to the "Abyss" but also, through access to new fundamental elements of world-building, allowed humanity to reach a fundamentally new level of development, unveiling boundless possibilities.
+        </p>
+        <p>
+            The human race possesses knowledge of steam and electrical technologies. The ruling powers within the Dominion are divided into various clan groupings, each specializing in different technological or tactical doctrines. They are the masters of precision, the architects of destruction, and the purveyors of stiff upper lips in the face of cosmic horror. And they always have a plan, even if it involves blowing up half the map.
+        </p>
+
+        <h4>Racial Ability: Tactical Relocation</h4>
+        <p>
+            Each human unit has the ability to transfer its turn to an allied human unit. The target must be a unit from the Human faction and must be within 3 cells. A d6 roll of 3, 4, 5, or 6 is required for this transfer to succeed. The unit that transfers its turn loses its current turn.
+        </p>
+        <div class="tactical-tip">
+            <strong>Insight:</strong> This is an excellent way to activate your most powerful units multiple times in a round, or to get a crucial unit into position for a decisive blow. Prioritize transferring turns to units that can make the biggest impact, like a Ballistician or Sniper.
+        </div>
+
+        <h3>Human Units</h3>
+
+        <div class="unit-card-section human-unit">
+            <h4>Ballistician</h4>
+            <p class="unit-intro">
+                <em>A master of heavy ordnance, the Ballistician unleashes devastating volleys with calculated precision. Its ballista is a symphony of steam and steel, launching projectiles that can strike multiple foes. It's not subtle, but it is effective. The Abyss will learn to fear the sound of whirring gears and incoming explosive shells.</em>
+            </p>
+            <p><strong>Movement:</strong> 2</p>
+
+            <h5>Skills:</h5>
+            <ul class="skill-list">
+                <li class="skill-item">
+                    <strong>Ballista</strong>
+                    <div class="skill-details">
+                        <p>Attacks 2 adjacent targets within range 2. If another unit is immediately adjacent to the primary target, the skill can be rolled a second time against that adjacent unit. A sweeping arc of destruction.</p>
+                        <p class="dice-roll">Dice Roll: 4-5-6 (d6)</p>
+                        <div class="skill-properties">
+                            <span>Category: Ranged Combat</span>
+                            <span>Range: 2</span>
+                        </div>
+                        <div class="tactical-tip">
+                            <strong>Insight:</strong> Position the Ballistician to maximize the number of targets hit. Aim for tightly packed enemy formations. The potential for a second roll makes this very strong against clustered foes, allowing for significant area damage.
+                        </div>
+                    </div>
+                </li>
+                <li class="skill-item">
+                    <strong>Tracer Round</strong>
+                    <div class="skill-details">
+                        <p>Marks an enemy, adding +1 to allied units' dice rolls when using attack skill against the marked target.
+                            <br>"Attack skill" means any skill that has damage as a result.
+                        </p>
+                        <p class="dice-roll">Dice Roll: 4-5-6 (d6)</p>
+                        <div class="skill-properties">
+                            <span>Category: Ranged Combat</span>
+                            <span>Range: 3</span>
+                        </div>
+                        <div class="tactical-tip">
+                            <strong>Insight:</strong> Mark a high-priority enemy target (e.g., a strong melee unit or a unit with a powerful skill) to make it easier for your other units to wound or eliminate it. This is a great support skill for focusing fire.
+                        </div>
+                    </div>
+                </li>
+            </ul>
+
+            <h5>Trophies:</h5>
+            <ul class="trophy-list">
+                <li class="trophy-item">
+                    <strong>Substance: Liqueur</strong>
+                    <div class="trophy-details">
+                        <p>Revives a wounded unit adjacent. The revived unit skips its next turn. A quick patch-up from the battlefield medic.</p>
+                        <p>Trophy Value: 2</p>
+                        <div class="tactical-tip">
+                            <strong>Insight:</strong> A basic healing trophy. Useful for a quick revival of an adjacent unit.
+                        </div>
+                    </div>
+                </li>
+                <li class="trophy-item">
+                    <strong>Totem: Marker</strong>
+                    <div class="trophy-details">
+                        <p>Activates the "Tracer Round" skill. A quick adjustment, and the target is highlighted for destruction.</p>
+                        <p>Dice Roll: 4-5-6 (d6)</p>
+                        <p>Trophy Value: 2</p>
+                        <div class="tactical-tip">
+                            <strong>Insight:</strong> This trophy likely allows for a free activation of Tracer Round, making the Ballistician a strong support unit even after it's been defeated.
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <div class="unit-card-section human-unit">
+            <h4>Tank</h4>
+            <p class="unit-intro">
+                <em>A walking fortress of steel and defiance, the Tank is designed to absorb punishment and dish out brutal close-quarters damage. It is the immovable object, a testament to human engineering and stubbornness. Enemies often break themselves upon its armored hide, much to its amusement. And it probably has a very good sound system.</em>
+            </p>
+            <p><strong>Movement:</strong> 2</p>
+
+            <h5>Skills:</h5>
+            <ul class="skill-list">
+                <li class="skill-item">
+                    <strong>Meat Grinder</strong>
+                    <div class="skill-details">
+                        <p>Attacks all units around itself within a radius of 1. A whirling dervish of destruction.</p>
+                        <p class="dice-roll">Dice Roll: 4-5-6 (d6)</p>
+                        <div class="skill-properties">
+                            <span>Category: Melee Combat</span>
+                            <span>Radius: 1</span>
+                        </div>
+                        <div class="tactical-tip">
+                            <strong>Insight:</strong> Excellent for clearing out multiple weaker enemies or softening up a group of stronger ones. Position the Tank in the middle of enemy formations to maximize its impact.
+                        </div>
+                    </div>
+                </li>
+                <li class="skill-item">
+                    <strong>Defense</strong>
+                    <div class="skill-details">
+                        <p>Against melee and ranged attacks, subtract -1 from the enemy's dice roll when attacking the Tank. Its armor is thick, its resolve unyielding.</p>
+                        <div class="skill-properties">
+                            <span>Category: Passive</span>
+                        </div>
+                        <div class="tactical-tip">
+                            <strong>Insight:</strong> This passive makes the Tank incredibly durable. Use it to draw enemy fire and protect more vulnerable units, acting as a true frontline anchor.
+                        </div>
+                    </div>
+                </li>
+            </ul>
+
+            <h5>Trophies:</h5>
+            <ul class="trophy-list">
+                <li class="trophy-item">
+                    <strong>Substance: Liqueur</strong>
+                    <div class="trophy-details">
+                        <p>Revives a wounded unit adjacent. The revived unit skips its next turn. Even a metal behemoth can offer a moment of respite.</p>
+                        <p>Trophy Value: 2</p>
+                        <div class="tactical-tip">
+                            <strong>Insight:</strong> A surprising support trophy for a Tank. Use it to keep your frontline strong, particularly if another Tank or durable melee unit is nearby.
+                        </div>
+                    </div>
+                </li>
+                <li class="trophy-item">
+                    <strong>Totem: Stone Fist</strong>
+                    <div class="trophy-details">
+                        <p>A powerful melee attack, delivering a crushing blow.</p>
+                        <p class="dice-roll">Dice Roll: 4-5-6 (d6)</p>
+                        <p>Trophy Value: 3</p>
+                        <div class="tactical-tip">
+                            <strong>Insight:</strong> A strong single-target melee option. Use it on high-value targets that need to be removed quickly, or to secure a kill.
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <div class="unit-card-section human-unit">
+            <h4>Cleric</h4>
+            <p class="unit-intro">
+                <em>A beacon of hope in the desolate Abyss, the Cleric channels divine energy to mend wounds and bolster allies. They are the spiritual backbone of the human forces, offering solace and strength in a world that offers little of either. Also, they're surprisingly good at telling demons where to go, and they're usually right.</em>
+            </p>
+            <p><strong>Movement:</strong> 2</p>
+
+            <h5>Skills:</h5>
+            <ul class="skill-list">
+                <li class="skill-item">
+                    <strong>Prayer</strong>
+                    <div class="skill-details">
+                        <p>Choose one of effects:
+                            <ul>
+                                <li><strong>Healing:</strong> Revives a wounded unit without them losing their next turn. A divine touch that restores vitality.</li>
+                                <li><strong>Concentration:</strong> Add +1 to a target allied unit's dice roll. A blessing upon their efforts.</li>
+                                <li><strong>Exorcism:</strong> Frees a target unit from the effects of a "distortion" (negative magical or mental effect). A cleansing light against the Abyss's corruption.</li>
+                            </ul>
+                        </p>
+                        <p class="dice-roll">Dice Roll: 4-5-6 (d6)</p>
+                        <div class="skill-properties">
+                            <span>Category: Distortion</span>
+                            <span>Range: 2</span>
+                        </div>
+                        <div class="tactical-tip">
+                            <strong>Insight:</strong> This is your primary support skill. Use Healing on critical units to get them back into the fight immediately, or Concentration on units about to make a crucial attack or skill roll to ensure success.
+                        </div>
+                    </div>
+                </li>
+            </ul>
+
+            <h5>Trophies:</h5>
+            <ul class="trophy-list">
+                <li class="trophy-item">
+                    <strong>Substance: Stimulant</strong>
+                    <div class="trophy-details">
+                        <p>Grants a +1 bonus to any dice rolls the unit makes, without costing an additional action. A divine spark of inspiration.</p>
+                        <p>Trophy Value: 2</p>
+                        <div class="tactical-tip">
+                            <strong>Insight:</strong> Use this to ensure your "Prayer" or "Exorcism" skills succeed when they matter most, or to boost another unit's critical roll.
+                        </div>
+                    </div>
+                </li>
+                <li class="trophy-item">
+                    <strong>Totem: Seal of Purity</strong>
+                    <div class="trophy-details">
+                        <p>Activates the "Prayer" skill. A quick invocation to channel divine power.</p>
+                        <p>Dice Roll: 4-5-6 (d6)</p>
+                        <p>Trophy Value: 2</p>
+                        <div class="tactical-tip">
+                            <strong>Insight:</strong> This trophy likely allows for a free activation of Prayer, making the Cleric an even more responsive healer/supporter. It's a great way to get an extra healing or buff in.
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <div class="unit-card-section human-unit">
+            <h4>Pyrotechnician</h4>
+            <p class="unit-intro">
+                <em>A master of destructive pyrotechnics and spatial displacement, the Pyrotechnician brings both fiery devastation and unexpected mobility to the battlefield. They say he once set fire to a temporal anomaly, just to see what would happen. The results were... explosive. And probably involved a few singed eyebrows.</em>
+            </p>
+            <p><strong>Movement:</strong> 2</p>
+
+            <h5>Skills:</h5>
+            <ul class="skill-list">
+                <li class="skill-item">
+                    <strong>Fire Blast</strong>
+                    <div class="skill-details">
+                        <p>Creates an explosion dealing damage within a radius of 1, at a range of 3. A fiery eruption that consumes all in its path.</p>
+                        <p class="dice-roll">Dice Roll: 4-5-6 (d6)</p>
+                        <div class="skill-properties">
+                            <span>Category: Ranged Combat</span>
+                            <span>Range: 3</span>
+                            <span>Radius: 1</span>
+                        </div>
+                        <div class="tactical-tip">
+                            <strong>Insight:</strong> Excellent for clearing out groups of weaker enemies. Be mindful of the radius; you don't want to hit your own units. Positioning is key to maximize targets while avoiding friendly fire.
+                        </div>
+                    </div>
+                </li>
+                <li class="skill-item">
+                    <strong>Teleport</strong>
+                    <div class="skill-details">
+                        <p>Teleports a unit (or itself) to any point within a radius of 3. A sudden, disorienting jump through space.</p>
+                        <p class="dice-roll">Dice Roll: 4-5-6 (d6)</p>
+                        <div class="skill-properties">
+                            <span>Category: Distortion</span>
+                            <span>Radius: 3</span>
+                        </div>
+                        <div class="tactical-tip">
+                            <strong>Insight:</strong> Use this to quickly reposition the Pyrotechnician for a better angle on "Fire Blast," or to escape from a dangerous melee engagement. It makes them surprisingly elusive.
+                        </div>
+                    </div>
+                </li>
+            </ul>
+
+            <h5>Trophies:</h5>
+            <ul class="trophy-list">
+                <li class="trophy-item">
+                    <strong>Substance: Liqueur</strong>
+                    <div class="trophy-details">
+                        <p>Revives a wounded unit adjacent to the Pyrotechnician. The revived unit skips its next turn. A quick dousing of the flames of death.</p>
+                        <p>Trophy Value: 2</p>
+                        <div class="tactical-tip">
+                            <strong>Insight:</strong> Even explosive experts can be team players. Use this to keep your frontline units alive, especially if they are absorbing a lot of damage.
+                        </div>
+                    </div>
+                </li>
+                <li class="trophy-item">
+                    <strong>Totem: Scroll of Teleportation</strong>
+                    <div class="trophy-details">
+                        <p>Activates the "Teleport" skill. A hastily scribbled incantation, and then, poof!</p>
+                        <p>Dice Roll: 4-5-6 (d6)</p>
+                        <p>Trophy Value: 2</p>
+                        <div class="tactical-tip">
+                            <strong>Insight:</strong> This trophy likely allows for a free activation of Teleport, making the Pyrotechnician incredibly mobile and unpredictable. Use it to surprise enemies with a sudden attack or escape.
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <div class="unit-card-section human-unit">
+            <h4>Assassin</h4>
+            <p class="unit-intro">
+                <em>A phantom in the shadows, the Assassin strikes with lethal precision, disappearing before the enemy even knows they're there. Its hook can drag unsuspecting foes into its deadly embrace. They say the Abyss itself hides from its silent footsteps, probably because it owes the Assassin money.</em>
+            </p>
+            <p><strong>Movement:</strong> 3</p>
+
+            <h5>Skills:</h5>
+            <ul class="skill-list">
+                <li class="skill-item">
+                    <strong>Slash</strong>
+                    <div class="skill-details">
+                        <p>A swift, close-range attack, delivered with deadly intent.</p>
+                        <p class="dice-roll">Dice Roll: 4-5-6 (d6)</p>
+                        <div class="skill-properties">
+                            <span>Category: Melee Combat</span>
+                            <span>Range: 1 (Adjacent)</span>
+                        </div>
+                    </div>
+                </li>
+                <li class="skill-item">
+                    <strong>Hook</strong>
+                    <div class="skill-details">
+                        <p>Pulls a target unit towards the Assassin from a range of 3. A sudden, inescapable tug into danger.</p>
+                        <p class="dice-roll">Dice Roll: 4-5-6 (d6)</p>
+                        <div class="skill-properties">
+                            <span>Category: Buff</span>
+                            <span>Range: 3</span>
+                        </div>
+                        <div class="tactical-tip">
+                            <strong>Insight:</strong> Excellent for isolating enemy units, pulling them out of defensive positions, or dragging them into melee range for your other units to finish off.
+                        </div>
+                    </div>
+                </li>
+                <li class="skill-item">
+                    <strong>Stealth</strong>
+                    <div class="skill-details">
+                        <p>The Assassin is only visible and targetable by enemies if they are within 1, 2, 3 cells. At a distance of 4 cells or more, enemies cannot target the Assassin. A master of concealment, blending with the shadows of the Abyss.</p>
+                        <div class="skill-properties">
+                            <span>Category: Passive</span>
+                            <span>Property: Defensive</span>
+                        </div>
+                        <div class="tactical-tip">
+                            <strong>Insight:</strong> This passive makes the Assassin incredibly difficult to target from afar. Use this to your advantage to approach enemies unseen, to escape ranged threats, or to secure objectives without being targeted.
+                        </div>
+                    </div>
+                </li>
+            </ul>
+
+            <h5>Trophies:</h5>
+            <ul class="trophy-list">
+                <li class="trophy-item">
+                    <strong>Substance: Hashish</strong>
+                    <div class="trophy-details">
+                        <p>Ignore bind effect against melee skills.</p>
+                        <p>Trophy Value: 3</p>
+                        <div class="tactical-tip">
+                            <strong>Insight:</strong> This trophy likely allows for a free activation of Hook, enabling you to pull and then attack in the same turn, or pull an enemy away from an objective.
+                        </div>
+                    </div>
+                </li>
+                <li class="trophy-item">
+                    <strong>Totem: Hook</strong>
+                    <div class="trophy-details">
+                        <p>Activates the "Hook" skill. A quick, disorienting puff, and the target is reeled in.</p>
+                        <p>Trophy Value: 3</p>
+                        <div class="tactical-tip">
+                            <strong>Insight:</strong> This trophy likely allows for a free activation of Hook, enabling you to pull and then attack in the same turn, or pull an enemy away from an objective.
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <div class="unit-card-section human-unit">
+            <h4>Fighter</h4>
+            <p class="unit-intro">
+                <em>A relentless brawler, the Fighter charges into the fray, ignoring attempts to bind them, and delivering powerful lunges with their rusty blade. They might not be the smartest, but they're certainly the most enthusiastic about hitting things. And they're surprisingly good at ignoring your attempts to bind them.</em>
+            </p>
+            <p><strong>Movement:</strong> 3</p>
+
+            <h5>Skills:</h5>
+            <ul class="skill-list">
+                <li class="skill-item">
+                    <strong>Lunge</strong>
+                    <div class="skill-details">
+                        <p>A rapid, forward attack, closing the distance to the enemy.</p>
+                        <p class="dice-roll">Dice Roll: 4-5-6 (d6)</p>
+                        <div class="skill-properties">
+                            <span>Category: Melee Combat</span>
+                            <span>Range: 1 (Adjacent)</span>
+                        </div>
+                    </div>
+                </li>
+                <li class="skill-item">
+                    <strong>Acceleration</strong>
+                    <div class="skill-details">
+                        <p>Adds +2 to the unit's movement range. A burst of steam-powered speed.</p>
+                        <p class="dice-roll">Dice Roll: 4-5-6 (d6)</p>
+                        <div class="skill-properties">
+                            <span>Category: Buff</span>
+                            <span>Range: Self</span>
+                        </div>
+                        <div class="tactical-tip">
+                            <strong>Insight:</strong> Use this to quickly close the distance to a target, or to reposition the Fighter to a more advantageous position for their melee attacks.
+                        </div>
+                    </div>
+                </li>
+            </ul>
+
+            <h5>Trophies:</h5>
+            <ul class="trophy-list">
+                <li class="trophy-item">
+                    <strong>Substance: Stimulant</strong>
+                    <div class="trophy-details">
+                        <p>Grants a +1 bonus to any dice rolls the unit makes, without costing an additional action. A shot of pure adrenaline.</p>
+                        <p>Trophy Value: 3</p>
+                        <div class="tactical-tip">
+                            <strong>Insight:</strong> Use this to ensure your "Lunge" or "Acceleration" rolls succeed, especially when you need to land a critical hit or make a crucial move.
+                        </div>
+                    </div>
+                </li>
+                <li class="trophy-item">
+                    <strong>Totem: Rusty Knife</strong>
+                    <div class="trophy-details">
+                        <p>A basic melee attack, delivered with grim determination. It might be rusty, but it still cuts.</p>
+                        <p class="dice-roll">Dice Roll: 4-5-6 (d6)</p>
+                        <p>Trophy Value: 3</p>
+                        <div class="tactical-tip">
+                            <strong>Insight:</strong> A straightforward offensive trophy. Use it to add extra melee damage or to finish off a wounded enemy.
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <div class="unit-card-section human-unit">
+            <h4>Sniper</h4>
+            <p class="unit-intro">
+                <em>A silent death from afar, the Sniper is the bane of exposed enemies. Its rifle, coupled with a telescopic sight, can reach targets thought safe, though its blind spot makes close quarters a dangerous affair. They say it can hit a fly's wing at 100 paces, provided the fly isn't within 2 paces. They're very particular about personal space.</em>
+            </p>
+            <p><strong>Movement:</strong> 2</p>
+
+            <h5>Skills:</h5>
+            <ul class="skill-list">
+                <li class="skill-item">
+                    <strong>Rifle</strong>
+                    <div class="skill-details">
+                        <p>A standard ranged attack with a range of 4. Precision is paramount.</p>
+                        <p class="dice-roll">Dice Roll: 4-5-6 (d6)</p>
+                        <div class="skill-properties">
+                            <span>Category: Ranged Combat</span>
+                            <span>Range: 4</span>
+                        </div>
+                    </div>
+                </li>
+                <li class="skill-item">
+                    <strong>Telescopic Sight</strong>
+                    <div class="skill-details">
+                        <p>Increases attack range by +1. Extending the reach of death.</p>
+                        <p class="dice-roll">Dice Roll: 4-5-6 (d6)</p>
+                        <div class="skill-properties">
+                            <span>Category: Buff</span>
+                            <span>Range: Self</span>
+                        </div>
+                        <div class="tactical-tip">
+                            <strong>Insight:</strong> Use this to hit enemies that are just out of reach, or to maintain an even safer distance from the front lines. It makes the Sniper a truly long-range threat.
+                        </div>
+                    </div>
+                </li>
+                <li class="skill-item">
+                    <strong>Blind Spot</strong>
+                    <div class="skill-details">
+                        <p>Cannot shoot targets within a 2-cell radius of itself. A fatal flaw for a ranged specialist.</p>
+                        <p class="dice-roll">Dice Roll: None</p>
+                        <div class="skill-properties">
+                            <span>Category: Passive</span>
+                        </div>
+                        <div class="tactical-tip">
+                            <strong>Insight:</strong> Always be aware of the Sniper's blind spot. Keep melee units or other allies nearby to protect them from close-range threats, as they are completely vulnerable if an enemy gets too close.
+                        </div>
+                    </div>
+                </li>
+            </ul>
+
+            <h5>Trophies:</h5>
+            <ul class="trophy-list">
+                <li class="trophy-item">
+                    <strong>Substance: Energetic</strong>
+                    <div class="trophy-details">
+                        <p>Grants a +1 bonus to movement range. A quick burst of energy for repositioning.</p>
+                        <p>Trophy Value: 2</p>
+                        <div class="tactical-tip">
+                            <strong>Insight:</strong> Use this to get the Sniper into a better sniping position or to escape from an advancing enemy. Mobility is key for ranged units.
+                        </div>
+                    </div>
+                </li>
+                <li class="trophy-item">
+                    <strong>Totem: Steam Fist</strong>
+                    <div class="trophy-details">
+                        <p>A powerful melee attack with an extended range of 3. A surprising close-quarters option for a ranged unit.</p>
+                        <p>Dice Roll: 4-5-6 (d6)</p>
+                        <p>Trophy Value: 3</p>
+                        <div class="tactical-tip">
+                            <strong>Insight:</strong> This provides the Sniper with a desperate measure against enemies that close the distance. It's not a primary attack, but it can save them in a pinch or secure a kill on a fleeing foe.
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <div class="unit-card-section human-unit">
+            <h4>Mechanic</h4>
+            <p class="unit-intro">
+                <em>The unsung hero of the human forces, the Mechanic deploys and controls a variety of specialized drones to support their allies and disrupt their enemies. They are the brains behind the brawn, always tinkering, always improving. Just don't ask them to fix your toaster; they might turn it into a sentient, explosive automaton. Or worse, a tea kettle.</em>
+            </p>
+            <p><strong>Movement:</strong> 2</p>
+
+            <h5>Skills:</h5>
+            <ul class="skill-list">
+                <li class="skill-item">
+                    <strong>Demolition Drone</strong>
+                    <div class="skill-details">
+                        <p>Creates a Demolition Drone. A small, self-propelled explosive device.</p>
+                        <p class="dice-roll">Dice Roll: 4-5-6 (d6)</p>
+                        <div class="skill-properties">
+                            <span>Category: Summoning</span>
+                            <span>Range: 1 (Adjacent for placement)</span>
+                        </div>
+                        <div class="tactical-tip">
+                            <strong>Insight:</strong> Demolition Drones are excellent for area damage. Summon them strategically to blow up enemy clusters, or to deny an area.
+                        </div>
+                    </div>
+                </li>
+                <li class="skill-item">
+                    <strong>Jamming Drone</strong>
+                    <div class="skill-details">
+                        <p>Creates a Jamming Drone. A small, airborne device that disrupts enemy abilities.</p>
+                        <p class="dice-roll">Dice Roll: 4-5-6 (d6)</p>
+                        <div class="skill-properties">
+                            <span>Category: Summoning</span>
+                            <span>Range: 1 (Adjacent for placement)</span>
+                        </div>
+                        <div class="tactical-tip">
+                            <strong>Insight:</strong> Jamming Drones are great for controlling the battlefield and neutralizing dangerous enemy skills. Place them near enemy casters or units with powerful active skills.
+                        </div>
+                    </div>
+                </li>
+                <li class="skill-item">
+                    <strong>Drone Control</strong>
+                    <div class="skill-details">
+                        <p>The Mechanic can control a maximum of 2 drones of any type simultaneously. A master of remote warfare.</p>
+                        <div class="skill-properties">
+                            <span>Category: Passive</span>
+                            <span>Range: Self</span>
+                        </div>
+                        <div class="tactical-tip">
+                            <strong>Insight:</strong> This passive allows you to have a small army of drones supporting your main units. Manage your drone limit carefully to maintain maximum board presence.
+                        </div>
+                    </div>
+                </li>
+            </ul>
+
+            <h5>Trophies:</h5>
+            <ul class="trophy-list">
+                <li class="trophy-item">
+                    <strong>Substance: Second Chance</strong>
+                    <div class="trophy-details">
+                        <p>Allows a re-roll of a die. Must be activated before the first roll is resolved. Because even the best engineers have off days.</p>
+                        <p>Trophy Value: 2</p>
+                        <div class="tactical-tip">
+                            <strong>Insight:</strong> Use this to ensure your drone summoning or activation rolls succeed, as a failed summon can be a wasted turn.
+                        </div>
+                    </div>
+                </li>
+                <li class="trophy-item">
+                    <strong>Totem: Details</strong>
+                    <div class="trophy-details">
+                        <p>Used to activate one of the Mechanic's drones. A quick command, and the drone springs to action.</p>
+                        <p>Dice Roll: 4-5-6 (d6)</p>
+                        <p>Trophy Value: 2</p>
+                        <div class="tactical-tip">
+                            <strong>Insight:</strong> This trophy likely allows for a free activation of a drone, enabling you to summon and then immediately use a drone's ability in the same turn, creating powerful combos.
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <div class="unit-card-section human-unit">
+            <h4>Demolition Drone (Spawned Unit)</h4>
+            <p class="unit-intro">
+                <em>A mechanical marvel of destruction, the Demolition Drone is a ticking time bomb on legs. It rolls into position, then detonates with a satisfying *boom*, leaving only craters and wounded enemies in its wake. Its purpose is simple: explode. And it excels at it. It's also surprisingly cheerful about its impending demise.</em>
+            </p>
+            <p><strong>Movement:</strong> 3</p>
+
+            <h5>Skills:</h5>
+            <ul class="skill-list">
+                <li class="skill-item">
+                    <strong>Explosion</strong>
+                    <div class="skill-details">
+                        <p>Detonates, dealing damage to non-Fungoid units within a radius of 1. This leads to the Demolition Drone's self-destruction. A glorious, fiery finale.</p>
+                        <p class="dice-roll">Dice Roll: 4-5-6 (d6)</p>
+                        <div class="skill-properties">
+                            <span>Category: Distortion</span>
+                            <span>Radius: 1</span>
+                            <span>Property: Action After Movement</span>
+                            <span>Property: Suicide</span>
+                        </div>
+                        <div class="tactical-tip">
+                            <strong>Insight:</strong> Use these drones to clear out multiple weaker enemies or to soften up a cluster of stronger ones. They are disposable, so don't be afraid to sacrifice them for tactical advantage.
+                        </div>
+                    </div>
+                </li>
+                <li class="skill-item">
+                    <strong>Quick Death</strong>
+                    <div class="skill-details">
+                        <div class="skill-properties">
+                            <span>Category: Passive</span>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <div class="unit-card-section human-unit">
+            <h4>Jamming Drone (Spawned Unit)</h4>
+            <p class="unit-intro">
+                <em>A buzzing nuisance, the Jamming Drone creates a field of disruptive energy, scrambling enemy communications and hindering their abilities. It's the equivalent of a very annoying, very persistent mosquito, only with more technological interference. And it probably has a tiny, passive-aggressive hum.</em>
+            </p>
+            <p><strong>Movement:</strong> 3</p>
+
+            <h5>Skills:</h5>
+            <ul class="skill-list">
+                <li class="skill-item">
+                    <strong>Jamming Field</strong>
+                    <div class="skill-details">
+                        <p>Creates a field within a radius of 2 that disrupts enemy abilities or actions (-1 to enemy dice rolls). Enemies within the field find their skills faltering.</p>
+                        <div class="skill-properties">
+                            <span>Category: Passive</span>
+                            <span>Radius: 2</span>
+                        </div>
+                        <div class="tactical-tip">
+                            <strong>Insight:</strong> Position this drone near enemy casters or units with powerful active skills to hinder their effectiveness. It's a great defensive and control tool, especially against skill-reliant factions.
+                        </div>
+                    </div>
+                </li>
+                <li class="skill-item">
+                    <strong>Quick Death</strong>
+                    <div class="skill-details">
+                        <div class="skill-properties">
+                            <span>Category: Passive</span>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <h2>The Savages</h2>
+        <p>
+            The Savages are an indigenous, wild, and unpredictable force within the Abyss. Rooted deeply in the raw energies of this strange new world, they embody primal power and fierce resilience. Their connection to the untamed environment grants them unique adaptations and a terrifying, often chaotic, array of abilities. They are not merely beasts but sentient beings, though their methods and motives often remain a mystery to the more "civilized" factions. Their ferocity in combat is legendary, and their unexpected tactics can turn the tide of any engagement. They are the Abyss's true natives, and they don't appreciate intruders. Especially not the ones who try to "civilize" them.
+        </p>
+        <div class="dark-fantasy-quote">
+            <em>"Do not mistake their primal nature for ignorance. The Savages understand the Abyss in ways we can only dream of. And they will use that understanding to tear you limb from limb." - A captured Human researcher.</em>
+        </div>
+
+        <h4>Racial Ability: Primal Resilience</h4>
+        <p>
+            When a Savage unit is wounded, there is a chance (on a d6 roll of 4, 5, or 6) that it will automatically recover 1 wound at the start of its next turn, or gain a temporary bonus to its next action due to its inherent wild vitality. This can happen once per unit per round.
+        </p>
+        <div class="tactical-tip">
+            <strong>Insight:</strong> This makes Savages surprisingly resilient. Don't assume a wounded Savage is out of the fight! Prioritize finishing them off if you want them gone for good, as they can quickly bounce back.
+        </div>
+
+        <h3>Savage Units</h3>
+
+        <div class="unit-card-section savage-unit">
+            <h4>Shambler</h4>
+            <p class="unit-intro">
+                <em>A hulking, regenerating brute, the Shambler is a force of nature, slowly but inexorably advancing, shrugging off wounds that would fell lesser creatures. Its bone-crushing blows are legendary, and its persistence is terrifying. It's like a zombie, but with better dental hygiene and a surprising knack for self-repair.</em>
+            </p>
+            <p><strong>Movement:</strong> 3</p>
+
+            <h5>Skills:</h5>
+            <ul class="skill-list">
+                <li class="skill-item">
+                    <strong>Claw</strong>
+                    <div class="skill-details">
+                        <p>A devastating melee attack delivered with raw, untamed force.</p>
+                        <p class="dice-roll">Dice Roll: 4-5-6 (d6)</p>
+                        <div class="skill-properties">
+                            <span>Category: Melee Combat</span>
+                            <span>Range: 1 (Adjacent)</span>
+                        </div>
+                    </div>
+                </li>
+                <li class="skill-item">
+                    <strong>Regeneration</strong>
+                    <div class="skill-details">
+                        <p>Heals itself from wounds at the beginning of its next turn, without losing that turn. The Abyss itself seems to knit its flesh back together.</p>
+                        <div class="skill-properties">
+                            <span>Category: Passive</span>
+                        </div>
+                        <div class="tactical-tip">
+                            <strong>Insight:</strong> This makes the Shambler incredibly tough to deal with. If you wound it, try to finish it off in the same turn, or it will just heal. Focus fire to ensure it stays down.
+                        </div>
+                    </div>
+                </li>
+            </ul>
+
+            <h5>Trophies:</h5>
+            <ul class="trophy-list">
+                <li class="trophy-item">
+                    <strong>Substance: Liqueur</strong>
+                    <div class="trophy-details">
+                        <p>Revives a wounded unit adjacent. The revived unit skips its next turn. A surprising act of compassion from a beast.</p>
+                        <p>Trophy Value: 3</p>
+                        <div class="tactical-tip">
+                            <strong>Insight:</strong> If you control a Shambler, its ability to revive allies can be very useful for keeping your other units in the fight. A quick pick-me-up for your frontline.
+                        </div>
+                    </div>
+                </li>
+                <li class="trophy-item">
+                    <strong>Totem: Claw</strong>
+                    <div class="trophy-details">
+                        <p>A basic melee attack, delivered with raw, untamed force.</p>
+                        <p>Dice Roll: 4-5-6 (d6)</p>
+                        <p>Trophy Value: 3</p>
+                        <div class="tactical-tip">
+                            <strong>Insight:</strong> A straightforward offensive trophy. Use it when the main Claw attack isn't available or if you need a quick attack.
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <div class="unit-card-section savage-unit">
+            <h4>Shadow</h4>
+            <p class="unit-intro">
+                <em>A creature of pure darkness and malice, the Shadow is almost impossible to pin down, slipping through binds and striking with shadowy tendrils. It is a whisper of fear made manifest, and its touch is chilling. Trying to hit it is like trying to catch smoke... with a very large, very angry fist. And it probably giggles.</em>
+            </p>
+            <p><strong>Movement:</strong> 4</p>
+
+            <h5>Skills:</h5>
+            <ul class="skill-list">
+                <li class="skill-item">
+                    <strong>Shadow Tentacles</strong>
+                    <div class="skill-details">
+                        <p>Summons shadowy tendrils to attack or impede enemies. A chilling embrace from the void.</p>
+                        <p class="dice-roll">Dice Roll: 4-5-6 (d6)</p>
+                        <div class="skill-properties">
+                            <span>Category: Melee Combat</span>
+                            <span>Range: 1 (Adjacent)</span>
+                        </div>
+                        <div class="tactical-tip">
+                            <strong>Insight:</strong> A versatile melee attack that can also have secondary effects, possibly binding or slowing enemies. Use it to lock down a single enemy or to add extra damage.
+                        </div>
+                    </div>
+                </li>
+                <li class="skill-item">
+                    <strong>Intangibility</strong>
+                    <div class="skill-details">
+                        <p>Ignores effects of melee combat binds. The Shadow simply phases through attempts to restrain it.</p>
+                        <div class="skill-properties">
+                            <span>Category: Passive</span>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+
+            <h5>Trophies:</h5>
+            <ul class="trophy-list">
+                <li class="trophy-item">
+                    <strong>Substance: Stimulant</strong>
+                    <div class="trophy-details">
+                        <p>Grants a +1 bonus to any dice rolls the unit makes, without costing an additional action. A surge of dark energy.</p>
+                        <p>Trophy Value: 3</p>
+                        <div class="tactical-tip">
+                            <strong>Insight:</strong> Use this to ensure your "Shadow Tentacles" or other skill rolls succeed, especially when you need to land a critical hit.
+                        </div>
+                    </div>
+                </li>
+                <li class="trophy-item">
+                    <strong>Totem: Cloak of Shadows</strong>
+                    <div class="trophy-details">
+                        <p>Activates the "Intangibility" skill (as Buff)</p>
+                        <p>Dice Roll: 4-5-6 (d6)</p>
+                        <p>Trophy Value: 3</p>
+                        <div class="tactical-tip">
+                            <strong>Insight:</strong> This trophy likely allows for a free activation of Intangibility, ensuring the Shadow is always ready to slip away from binds.
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <div class="unit-card-section savage-unit">
+            <h4>Arsonist</h4>
+            <p class="unit-intro">
+                <em>A walking inferno, the Arsonist revels in spreading chaos and immolation across the battlefield with its flamethrower. Its hardened hide makes it impervious to the very flames it wields. It's a pyromaniac's dream, and everyone else's nightmare. And it probably smells faintly of burnt toast.</em>
+            </p>
+            <p><strong>Movement:</strong> 2</p>
+
+            <h5>Skills:</h5>
+            <ul class="skill-list">
+                <li class="skill-item">
+                    <strong>Flamethrower</strong>
+                    <div class="skill-details">
+                        <p>A cone of fire dealing damage with an attack range of 3 and a radius of 1. A scorching wave that leaves nothing but ash.</p>
+                        <p class="dice-roll">Dice Roll: 5-6 (d6)</p>
+                        <div class="skill-properties">
+                            <span>Category: Ranged Combat</span>
+                            <span>Range: 3</span>
+                            <span>Radius: 1</span>
+                        </div>
+                        <div class="tactical-tip">
+                            <strong>Insight:</strong> Excellent for hitting multiple enemies in a line or small cluster. Position the Arsonist to maximize its area of effect, but be careful of friendly fire.
+                        </div>
+                    </div>
+                </li>
+                <li class="skill-item">
+                    <strong>Hardening</strong>
+                    <div class="skill-details">
+                        <p>Immune to fire attacks. The flames of the Abyss cannot harm it.</p>
+                        <div class="skill-properties">
+                            <span>Category: Passive</span>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+
+            <h5>Trophies:</h5>
+            <ul class="trophy-list">
+                <li class="trophy-item">
+                    <strong>Substance: Liqueur</strong>
+                    <div class="trophy-details">
+                        <p>Revives a wounded unit adjacent. The revived unit skips its next turn.</p>
+                        <p>Trophy Value: 2</p>
+                        <div class="tactical-tip">
+                            <strong>Insight:</strong> A basic healing trophy. Useful for a quick revival of an adjacent unit.
+                        </div>
+                    </div>
+                </li>
+                <li class="trophy-item">
+                    <strong>Totem: Fireball</strong>
+                    <div class="trophy-details">
+                        <p>Launches a projectile of fire with an attack range of 2 and a radius of 1. A burst of primal magic.</p>
+                        <p>Dice Roll: 5-6 (d6)</p>
+                        <p>Trophy Value: 2</p>
+                        <div class="tactical-tip">
+                            <strong>Insight:</strong> Provides a useful ranged area-of-effect attack. Use it to chip away at groups of enemies from a distance.
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <div class="unit-card-section savage-unit">
+            <h4>Cave Dweller</h4>
+            <p class="unit-intro">
+                <em>A creature of the deep, the Cave Dweller emerges from its subterranean lair to sow confusion and control among its enemies. Its mind-bending abilities can turn foes into puppets, or simply leave them stumbling in a daze. It's not just the darkness that hides in caves; it's also madness, and a surprising amount of dust.</em>
+            </p>
+            <p><strong>Movement:</strong> 2</p>
+
+            <h5>Skills:</h5>
+            <ul class="skill-list">
+                <li class="skill-item">
+                    <strong>Hallucinations</strong>
+                    <div class="skill-details">
+                        <p>The target uses its combat skill against the nearest unit, at a range of 4. A cruel trick of the mind, turning friend against friend.</p>
+                        <p class="dice-roll">Dice Roll: 3-4-5-6 (d6)</p>
+                        <div class="skill-properties">
+                            <span>Category: Distortion</span>
+                            <span>Range: 4</span>
+                        </div>
+                        <div class="tactical-tip">
+                            <strong>Insight:</strong> Use this to force a powerful enemy unit to attack its own allies, disrupting their formation and dealing friendly fire. This can be devastating if used on a high-damage enemy.
+                        </div>
+                    </div>
+                </li>
+                <li class="skill-item">
+                    <strong>Daze</strong>
+                    <div class="skill-details">
+                        <p>Takes control of the target's movement at a range of 4. The target stumbles, unable to direct its own steps.</p>
+                        <p class="dice-roll">Dice Roll: 4-5-6 (d6)</p>
+                        <div class="skill-properties">
+                            <span>Category: Distortion</span>
+                            <span>Range: 4</span>
+                        </div>
+                        <div class="tactical-tip">
+                            <strong>Insight:</strong> Excellent for preventing an enemy from reaching a critical location or escaping a trap. Combine with other units to corner your dazed foe, making them easy to pick off.
+                        </div>
+                    </div>
+                </li>
+            </ul>
+
+            <h5>Trophies:</h5>
+            <ul class="trophy-list">
+                <li class="trophy-item">
+                    <strong>Substance: Energetic</strong>
+                    <div class="trophy-details">
+                        <p>Grants a +1 bonus to movement range. A surge of primal energy.</p>
+                        <p>Trophy Value: 2</p>
+                    </div>
+                </li>
+                <li class="trophy-item">
+                    <strong>Totem: Daze Essence</strong>
+                    <div class="trophy-details">
+                        <p>Activates the "Daze" skill (as Distortion).</p>
+                        <p>Dice Roll: 4-5-6 (d6)</p>
+                        <p>Trophy Value: 3</p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <div class="unit-card-section savage-unit">
+            <h4>Creature</h4>
+            <p class="unit-intro">
+                <em>A monstrous abomination, the Creature is a living engine of acidic destruction, pulling foes into its corrosive embrace. Its fangs drip with potent venom, and its very presence is a threat. It's not pretty, but it's effective. And it probably smells like a very old, very angry swamp.</em>
+            </p>
+            <p><strong>Movement:</strong> 3</p>
+
+            <h5>Skills:</h5>
+            <ul class="skill-list">
+                <li class="skill-item">
+                    <strong>Acid Slime</strong>
+                    <div class="skill-details">
+                        <p>A corrosive melee attack, melting through armor and flesh.</p>
+                        <p class="dice-roll">Dice Roll: 4-5-6 (d6)</p>
+                        <div class="skill-properties">
+                            <span>Category: Melee Combat</span>
+                            <span>Range: 1 (Adjacent)</span>
+                        </div>
+                    </div>
+                </li>
+                <li class="skill-item">
+                    <strong>Lure</strong>
+                    <div class="skill-details">
+                        <p>Pulls a target unit towards the Creature from a range of 3. An irresistible, terrifying pull.</p>
+                        <p class="dice-roll">Dice Roll: 4-5-6 (d6)</p>
+                        <div class="skill-properties">
+                            <span>Category: Buff</span>
+                            <span>Range: 3</span>
+                        </div>
+                        <div class="tactical-tip">
+                            <strong>Insight:</strong> Use this to drag vulnerable ranged units into melee range, or to pull enemies away from objectives. It's excellent for isolating high-value targets.
+                        </div>
+                    </div>
+                </li>
+            </ul>
+
+            <h5>Trophies:</h5>
+            <ul class="trophy-list">
+                <li class="trophy-item">
+                    <strong>Substance: Stimulant</strong>
+                    <div class="trophy-details">
+                        <p>Grants a +1 bonus to any dice rolls the unit makes, without costing an additional action. A surge of primal fury.</p>
+                        <p>Trophy Value: 3</p>
+                        <div class="tactical-tip">
+                            <strong>Insight:</strong> Use this to ensure your "Acid Slime" or "Lure" rolls succeed, especially when the outcome is critical.
+                        </div>
+                    </div>
+                </li>
+                <li class="trophy-item">
+                    <strong>Totem: Acid Slime</strong>
+                    <div class="trophy-details">
+                        <p>Activates the "Acid Slime" skill (as Melee Combat).</p>
+                        <p>Dice Roll: 4-5-6 (d6)</p>
+                        <p>Trophy Value: 3</p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <div class="unit-card-section savage-unit">
+            <h4>Swamper</h4>
+            <p class="unit-intro">
+                <em>A lumbering, resilient denizen of the putrid swamps, the Swamper slows all who dare to tread upon its territory. Its natural defenses make it a formidable obstacle, shrugging off blows with surprising ease. It moves slowly, but so will you. And it's probably judging your fashion choices.</em>
+            </p>
+            <p><strong>Movement:</strong> 2</p>
+
+            <h5>Skills:</h5>
+            <ul class="skill-list">
+                <li class="skill-item">
+                    <strong>Quagmire</strong>
+                    <div class="skill-details">
+                        <p>Within the Swamper's segment, the movement of all units is reduced to 1. The ground itself becomes a sticky, treacherous bog.</p>
+                        <div class="skill-properties">
+                            <span>Category: Passive</span>
+                            <span>Range: Segment Area</span>
+                        </div>
+                        <div class="tactical-tip">
+                            <strong>Insight:</strong> This is a powerful area control skill. Use it to slow down enemy advances, or to create a choke point where your other units can pick off slowed foes. It can completely disrupt enemy movement strategies.
+                        </div>
+                    </div>
+                </li>
+                <li class="skill-item">
+                    <strong>Defense</strong>
+                    <div class="skill-details">
+                        <p>Against melee and ranged attacks, subtract -1 from the dice roll when attacking the Swamper. Its thick hide and natural resilience make it a tough nut to crack.</p>
+                        <div class="skill-properties">
+                            <span>Category: Passive</span>
+                        </div>
+                        <div class="tactical-tip">
+                            <strong>Insight:</strong> This passive makes the Swamper an excellent tank. Use it to draw enemy fire and protect more vulnerable units, as it can absorb a lot of punishment.
+                        </div>
+                    </div>
+                </li>
+            </ul>
+
+            <h5>Trophies:</h5>
+            <ul class="trophy-list">
+                <li class="trophy-item">
+                    <strong>Substance: Liqueur</strong>
+                    <div class="trophy-details">
+                        <p>Revives a wounded unit adjacent. The revived unit skips its next turn.</p>
+                        <p>Trophy Value: 3</p>
+                        <div class="tactical-tip">
+                            <strong>Insight:</strong> A basic healing trophy. Useful for a quick revival of an adjacent unit.
+                        </div>
+                    </div>
+                </li>
+                <li class="trophy-item">
+                    <strong>Totem: Bottle of Glue</strong>
+                    <div class="trophy-details">
+                        <p>Target skips its next turn, Ranged Combat. Range: 3</p>
+                        <p>Trophy Value: 3</p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <div class="unit-card-section savage-unit">
+            <h4>Fang</h4>
+            <p class="unit-intro">
+                <em>A primal hunter with razor-sharp teeth and explosive speed, the Fang can charge across the battlefield to deliver devastating bites. Its predatory instincts and burst of speed make it a terrifying opponent in close combat. It's like a very angry, very fast dental nightmare.</em>
+            </p>
+            <p><strong>Movement:</strong> 3</p>
+
+            <h5>Skills:</h5>
+            <ul class="skill-list">
+                <li class="skill-item">
+                    <strong>Sharp Teeth</strong>
+                    <div class="skill-details">
+                        <p>A vicious bite attack with razor-sharp fangs that tear through flesh.</p>
+                        <p class="dice-roll">Dice Roll: 5-6 (d6)</p>
+                        <div class="skill-properties">
+                            <span>Category: Melee Combat</span>
+                            <span>Range: 1 (Adjacent)</span>
+                        </div>
+                    </div>
+                </li>
+                <li class="skill-item">
+                    <strong>Charge</strong>
+                    <div class="skill-details">
+                        <p>Adds +2 to dice rolls when attacking a target at range 2, if the cell next to the target is empty after movement.</p>
+                        <p class="dice-roll">Dice Roll: 4-5-6 (d6)</p>
+                        <div class="skill-properties">
+                            <span>Category: Buff</span>
+                        </div>
+                        <div class="tactical-tip">
+                            <strong>Insight:</strong> Use this to cover distance quickly and deliver a powerful attack. The bonus makes it very likely to hit, so use it to finish off wounded enemies or break through defensive lines.
+                        </div>
+                    </div>
+                </li>
+            </ul>
+
+            <h5>Trophies:</h5>
+            <ul class="trophy-list">
+                <li class="trophy-item">
+                    <strong>Substance: Liqueur</strong>
+                    <div class="trophy-details">
+                        <p>Revives a wounded unit adjacent. The revived unit skips its next turn.</p>
+                        <p>Trophy Value: 2</p>
+                    </div>
+                </li>
+                <li class="trophy-item">
+                    <strong>Totem: Sharp Teeth</strong>
+                    <div class="trophy-details">
+                        <p>Activates the "Sharp Teeth" skill (as Melee Combat).</p>
+                        <p>Trophy Value: 3</p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <div class="unit-card-section savage-unit">
+            <h4>Malicious One</h4>
+            <p class="unit-intro">
+                <em>A dark and malevolent entity, the Malicious One brings concussive force and supernatural protection to the battlefield. Its ability to shake the very ground and protect itself from harm makes it a formidable opponent. It's like having a very angry earthquake with attitude.</em>
+            </p>
+            <p><strong>Movement:</strong> 3</p>
+
+            <h5>Skills:</h5>
+            <ul class="skill-list">
+                <li class="skill-item">
+                    <strong>Concussion</strong>
+                    <div class="skill-details">
+                        <p>Upon landing only after movement, deals damage to all units in radius 1. The ground shakes from the impact without bind effects.</p>
+                        <p class="dice-roll">Dice Roll: 5-6 (d6)</p>
+                        <div class="skill-properties">
+                            <span>Category: Melee Combat</span>
+                        </div>
+                        <div class="tactical-tip">
+                            <strong>Insight:</strong> This skill activates automatically after movement, making the Malicious One dangerous to group around. Use its movement strategically to position for maximum area damage.
+                        </div>
+                    </div>
+                </li>
+                <li class="skill-item">
+                    <strong>Invulnerability</strong>
+                    <div class="skill-details">
+                        <p>Protection against ranged combat - reduces the attacker's dice roll value by 1 when attacked at range.</p>
+                        <div class="skill-properties">
+                            <span>Category: Passive</span>
+                            <span>Range: Self</span>
+                        </div>
+                        <div class="tactical-tip">
+                            <strong>Insight:</strong> This passive makes the Malicious One very resilient against ranged attacks. Force enemies into melee combat where this protection doesn't apply.
+                        </div>
+                    </div>
+                </li>
+            </ul>
+
+            <h5>Trophies:</h5>
+            <ul class="trophy-list">
+                <li class="trophy-item">
+                    <strong>Substance: Liqueur</strong>
+                    <div class="trophy-details">
+                        <p>Revives a wounded unit adjacent. The revived unit skips its next turn.</p>
+                        <p>Trophy Value: 3</p>
+                    </div>
+                </li>
+                <li class="trophy-item">
+                    <strong>Totem: Monster Claws</strong>
+                    <div class="trophy-details">
+                        <p>A basic melee attack delivered with supernatural force.</p>
+                        <p>Dice Roll: 4-5-6 (d6)</p>
+                        <p>Trophy Value: 3</p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+    </div>
+</body>
+</html>
